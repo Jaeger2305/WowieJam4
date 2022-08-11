@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimOnStart: 1
   AnimOnHide: 0
-  StartAnimEntryOffset: {x: -25, y: -30}
+  StartAnimEntryOffset: {x: -75, y: 40}
   StartAnimMotionCurve:
     serializedVersion: 2
     m_Curve:
@@ -64,5 +64,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  StartAnimDuration: 2
+  StartAnimDuration: 0.85
   TRoundingAmount: 0.025
