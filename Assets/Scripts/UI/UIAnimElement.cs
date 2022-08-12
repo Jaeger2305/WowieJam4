@@ -10,6 +10,8 @@ public class UIAnimElement : MonoBehaviour
     [SerializeField] Image _img;
     [SerializeField] CanvasGroup _alphaGroup;
 
+    public bool IsIdle { get { return !_animating; } }
+
     Vector2 _defaultLocalPosition;
 
     float _animStartTime;
