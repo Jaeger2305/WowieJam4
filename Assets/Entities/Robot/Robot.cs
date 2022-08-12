@@ -11,6 +11,7 @@ public class Robot : MonoBehaviour
         ChaseTarget,
         GoingBackToStart,
         Seeking,
+        ShootingTarget,
     }
 
     public AIPath _aiPath;
@@ -21,8 +22,11 @@ public class Robot : MonoBehaviour
     [SerializeField] private Vector2 _patrolRange = new Vector2(6f, 4f);
     [SerializeField] private float _visionRange = 5f;
     [SerializeField] private float _stopChaseDistance = 8f;
+    [SerializeField] private float _attackRange = 4f;
+
     [SerializeField] private Transform _chaseTarget;
     [SerializeField] private Transform _seekTarget;
+    [SerializeField] private bool _isArmed;
 
     private void Awake()
     {
@@ -37,6 +41,7 @@ public class Robot : MonoBehaviour
         _fabricatedDestination = new GameObject();
         _fabricatedDestination.transform.position = _seekTarget == null ? GetRoamingPosition() : _seekTarget.position;
         _aiDestinationSetter.target = _fabricatedDestination.transform;
+        _isArmed = TryGetComponent(out ProjectileController pc);
     }
 
     private void Update()
@@ -62,11 +67,25 @@ public class Robot : MonoBehaviour
                     _state = State.Roaming;
                 }
                 break;
+            case State.ShootingTarget:
+                if (Vector3.Distance(transform.position, _chaseTarget.position) < _attackRange)
+                {
+                    Debug.Log("Target in range, firing");
+                    GetComponent<ProjectileController>().FireAtTarget(_chaseTarget);
+                }
+                else
+                {
+                    _state = State.ChaseTarget;
+                }
+                break;
             case State.ChaseTarget:
                 if (Vector3.Distance(transform.position, _chaseTarget.position) > _stopChaseDistance)
                 {
                     Debug.Log("Target out of chase range, going back to start");
                     _state = State.GoingBackToStart;
+                } else if (_isArmed && Vector3.Distance(transform.position, _chaseTarget.position) < _attackRange)
+                {
+                    _state = State.ShootingTarget;
                 }
                 break;
             case State.GoingBackToStart:
@@ -89,12 +108,16 @@ public class Robot : MonoBehaviour
             Debug.Log("Found target");
             // Target within target range
             _state = State.ChaseTarget;
-            _aiDestinationSetter.target = _chaseTarget.transform;
+            _aiDestinationSetter.target = _chaseTarget;
         }
     }
 
     public void SeekTarget(Transform target)
     {
         _seekTarget = target;
+    }
+    public void HuntTarget(Transform target)
+    {
+        _chaseTarget = target;
     }
 }
