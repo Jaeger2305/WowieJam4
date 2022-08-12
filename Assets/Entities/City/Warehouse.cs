@@ -45,6 +45,7 @@ public class Warehouse : MonoBehaviour
         {
             Debug.Log("Robot delivered supplies");
             DeliverSupplies(80);
+            Destroy(other.gameObject);
         }
     }
 }

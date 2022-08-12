@@ -10,6 +10,7 @@ public class Robot : MonoBehaviour
         Roaming,
         ChaseTarget,
         GoingBackToStart,
+        Seeking,
     }
 
     public AIPath _aiPath;
@@ -17,10 +18,11 @@ public class Robot : MonoBehaviour
     private State _state;
     private AIDestinationSetter _aiDestinationSetter;
     private GameObject _fabricatedDestination;
-    [SerializeField] private Transform _target;
     [SerializeField] private Vector2 _patrolRange = new Vector2(6f, 4f);
     [SerializeField] private float _visionRange = 5f;
     [SerializeField] private float _stopChaseDistance = 8f;
+    [SerializeField] private Transform _chaseTarget;
+    [SerializeField] private Transform _seekTarget;
 
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class Robot : MonoBehaviour
     {
         _startingPosition = transform.position;
         _fabricatedDestination = new GameObject();
-        _fabricatedDestination.transform.position = GetRoamingPosition();
+        _fabricatedDestination.transform.position = _seekTarget == null ? GetRoamingPosition() : _seekTarget.position;
         _aiDestinationSetter.target = _fabricatedDestination.transform;
     }
 
@@ -48,11 +50,20 @@ public class Robot : MonoBehaviour
                     Debug.Log("Reached patrol path, getting new patrol spot");
                     _fabricatedDestination.transform.position = GetRoamingPosition();
                 }
-
-                FindTarget();
+                if (_chaseTarget != null)
+                {
+                    FindTarget(); // this might be causing performance issues - i think there's an easier way of doing this
+                }
+                break;
+            case State.Seeking:
+                if (_aiPath.reachedDestination)
+                {
+                    _startingPosition = transform.position;
+                    _state = State.Roaming;
+                }
                 break;
             case State.ChaseTarget:
-                if (Vector3.Distance(transform.position, _target.position) > _stopChaseDistance)
+                if (Vector3.Distance(transform.position, _chaseTarget.position) > _stopChaseDistance)
                 {
                     Debug.Log("Target out of chase range, going back to start");
                     _state = State.GoingBackToStart;
@@ -73,12 +84,17 @@ public class Robot : MonoBehaviour
 
     private void FindTarget()
     {
-        if (Vector3.Distance(transform.position, _target.position) < _visionRange)
+        if (Vector3.Distance(transform.position, _chaseTarget.position) < _visionRange)
         {
             Debug.Log("Found target");
             // Target within target range
             _state = State.ChaseTarget;
-            _aiDestinationSetter.target = _target.transform;
+            _aiDestinationSetter.target = _chaseTarget.transform;
         }
+    }
+
+    public void SeekTarget(Transform target)
+    {
+        _seekTarget = target;
     }
 }

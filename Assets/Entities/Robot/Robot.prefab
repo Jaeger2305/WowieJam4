@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 6611676686123712642}
   m_Layer: 0
   m_Name: Robot
-  m_TagString: Untagged
+  m_TagString: Robot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,10 +226,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aiPath: {fileID: 6327413809677703108}
-  _target: {fileID: 0}
   _patrolRange: {x: 4, y: 3}
   _visionRange: 6
   _stopChaseDistance: 10
+  _chaseTarget: {fileID: 0}
+  _seekTarget: {fileID: 0}
 --- !u!114 &1325505600
 MonoBehaviour:
   m_ObjectHideFlags: 0
