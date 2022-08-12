@@ -6291,6 +6291,30 @@ PrefabInstance:
       propertyPath: _chaseTarget
       value: 
       objectReference: {fileID: 2136856541}
+    - target: {fileID: 4177182208736402186, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177182208736402186, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796471290303183639, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 647360882}
+    - target: {fileID: 5892171137368060728, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892171137368060728, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892171137368060728, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6327413809677703104, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
       propertyPath: m_Name
       value: Robot
