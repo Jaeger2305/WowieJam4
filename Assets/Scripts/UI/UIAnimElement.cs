@@ -7,7 +7,6 @@ public class UIAnimElement : MonoBehaviour
 {
     [SerializeField] UIStyleData _style;
     [SerializeField] RectTransform _rootRect;
-    [SerializeField] Image _img;
     [SerializeField] CanvasGroup _alphaGroup;
 
     public bool IsIdle { get { return !_animating; } }
