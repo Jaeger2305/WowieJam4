@@ -16,7 +16,7 @@ public class RobotDestroyer : MonoBehaviour
         var colliders = Physics2D.OverlapCircleAll(transform.position, 10);
         foreach (var collider in colliders)
         {
-            if (collider.CompareTag("Robot"))
+            if (collider.CompareTag("Player"))
             {
                 _robot.HuntTarget(collider.transform);
             }

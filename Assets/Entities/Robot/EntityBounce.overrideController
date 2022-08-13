@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EntityBounce
+  m_Controller: {fileID: 9100000, guid: d732f513e55c4df4faf8174f52f534a6, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 01064bcc58e5cd44489de74739eab3b2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 01064bcc58e5cd44489de74739eab3b2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c0c1441fc681f1640b3bebce266b7419, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c0c1441fc681f1640b3bebce266b7419, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 545aaa3eb06cd794bba925afddd1e8d0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 545aaa3eb06cd794bba925afddd1e8d0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ef4139a0129ed684e87640e879389c02, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ef4139a0129ed684e87640e879389c02, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a3d3378b1ff057b479716502eb14ed80, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a3d3378b1ff057b479716502eb14ed80, type: 2}

@@ -19,8 +19,15 @@ public class Health : MonoBehaviour
     /** Consume a specific amount - useful for triggering on a specific event */
     public void LoseHealth(int amount)
     {
+        var healthBefore = _health;
         _health = System.Math.Clamp(_health - amount, 0, _maxHealth);
-        healthChanged.Invoke(_health, amount);
+
+        // assume all the correct events were already triggered, and as a result just exit early on this event.
+        // We were seeing this when the projectiles were entering a corpse's collider, and attempting to remove its health further
+        // Probably semantically better to never call lose health, and remove the collider, or disable damage or something, but this is just quick.
+        if (healthBefore == health) return;
+
+        healthChanged.Invoke(_health, amount); // careful here - amount will be positive in the event for both lose and gain health!
         if (_health <= 0) healthEmpty.Invoke();
     }
 
