@@ -39,13 +39,12 @@ public class Warehouse : MonoBehaviour
         ui.SetSupplies(_supplies);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (other.CompareTag("Robot"))
-        {
-            Debug.Log("Robot delivered supplies");
-            DeliverSupplies(80);
-            Destroy(other.gameObject);
-        }
+        collider.TryGetComponent(out Inventory inventory);
+        if (inventory == null) return;
+
+        DeliverSupplies(inventory.EmptyInventory());
+        if (collider.CompareTag("Robot")) Destroy(collider.gameObject); // Probably we want to keep the robots, but this is simpelr for now.
     }
 }

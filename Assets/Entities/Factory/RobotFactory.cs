@@ -11,5 +11,6 @@ public class RobotFactory : MonoBehaviour
     {
         Instantiate(robot);
         robot.GetComponent<WaypointModule>().SetWaypoint(robotDestination);
+        robot.GetComponent<Inventory>().AddScrap(40);
     }
 }

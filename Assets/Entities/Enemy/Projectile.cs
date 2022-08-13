@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     private Transform source;
     private int speedFactor;
     private int damage = 5;
+    [SerializeField] List<EntityType> _targetEntityTypes;
 
     private Rigidbody2D projectileBody;
 
@@ -16,12 +17,13 @@ public class Projectile : MonoBehaviour
         projectileBody = GetComponent<Rigidbody2D>();
     }
 
-    public void Init(Transform target, Transform source, int speedFactor, int damage)
+    public void Init(Transform target, Transform source, int speedFactor, int damage, List<EntityType> targetEntityTypes)
     {
         GetComponentInChildren<SpriteRenderer>().color = new Color(Random.Range(0.2f, 1f), Random.Range(0.2f, 1f), Random.Range(0.2f, 1f));
         this.transform.position = source.position;
         this.damage = damage;
         this.speedFactor = speedFactor;
+        this._targetEntityTypes = targetEntityTypes;
         Vector2 moveDirection = (target.position - source.position).normalized;
         projectileBody.velocity = moveDirection * speedFactor;
         if (moveDirection != Vector2.zero)
@@ -34,7 +36,8 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         collider.TryGetComponent(out Health health);
-        if (health != null)
+        collider.TryGetComponent(out EntityMetadata entity);
+        if (health != null && _targetEntityTypes.Contains(entity.entityType))
         {
             health.LoseHealth(damage);
             Destroy(gameObject);

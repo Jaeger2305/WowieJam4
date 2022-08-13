@@ -354,6 +354,8 @@ GameObject:
   - component: {fileID: 1492234949}
   - component: {fileID: 1492234950}
   - component: {fileID: 6016894517328857606}
+  - component: {fileID: 4108919232761026468}
+  - component: {fileID: 3013711531005227901}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Robot
@@ -514,10 +516,22 @@ MonoBehaviour:
   healthEmpty:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6327413809677703104}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4108919232761026468}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: DropScrap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3013711531005227901}
+        m_TargetAssemblyTypeName: PlayerGFX, Assembly-CSharp
+        m_MethodName: TriggerDeath
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -532,6 +546,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8371334924208289625}
         m_TargetAssemblyTypeName: HealthUI, Assembly-CSharp
         m_MethodName: SetHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3013711531005227901}
+        m_TargetAssemblyTypeName: PlayerGFX, Assembly-CSharp
+        m_MethodName: TriggerDamage
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -580,7 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _patrolRadius: 5
-  _patrolSpeed: 5
+  _patrolSpeed: 1
 --- !u!114 &1492234948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visionRange: 5
   _chaseSpeed: 1
-  _targetEntityTypes: 02000000
+  _targetEntityTypes: 
 --- !u!114 &1492234949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,8 +649,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8026358160752979157, guid: f2ad2b0d6e0371e4a90c1beed17efe49, type: 3}
-  cooldownBetweenShots: 0.5
+  _cooldownBetweenShots: 0.5
   _attackRange: 5
+  _projectileDamage: 15
+  _projectileSpeed: 5
   _targetEntityTypes: 00000000
 --- !u!114 &6016894517328857606
 MonoBehaviour:
@@ -640,6 +668,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entityType: 1
   _label: 
+--- !u!114 &4108919232761026468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327413809677703104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9093225abcab7d4b8c974a0c02a2526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrapPrefab: {fileID: 1838989963862833393, guid: 5908dbe0535261b43842203c4b2dde77, type: 3}
+  scrapCollected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3013711531005227901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327413809677703104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e67ed44a503b140be8fbd2629b00fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9146119446927793971
 GameObject:
   m_ObjectHideFlags: 0

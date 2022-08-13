@@ -35,7 +35,7 @@ public class AttackModule : MonoBehaviour
         {
             cooldown += _cooldownBetweenShots;
             Projectile projectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
-            projectile.Init(_attackTarget, transform, _projectileSpeed, _projectileDamage);
+            projectile.Init(_attackTarget, transform, _projectileSpeed, _projectileDamage, _targetEntityTypes);
         }
     }
 

@@ -602,12 +602,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cac75b1dac56346b16eec586b5ddb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 8026358160752979157, guid: f2ad2b0d6e0371e4a90c1beed17efe49, type: 3}
   _cooldownBetweenShots: 0.5
-  _attackRange: 5
-  _projectileDamage: 15
+  _attackRange: 7
+  _projectileDamage: 20
   _projectileSpeed: 5
-  _targetEntityTypes: 
+  _targetEntityTypes: 01000000
 --- !u!114 &881469276562873082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,9 +620,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d293a6fb98bf1bb4f9670a24fe67226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visionRange: 5
-  _chaseSpeed: 1
-  _targetEntityTypes: 
+  _visionRange: 10
+  _chaseSpeed: 2
+  _targetEntityTypes: 01000000
 --- !u!114 &6992187132869409927
 MonoBehaviour:
   m_ObjectHideFlags: 0
