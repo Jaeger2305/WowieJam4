@@ -631,6 +631,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d1b730a249b194cbf6a34b791b8ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _statNameTxt: {fileID: 3459079368203692610}
+  _statValueTxt: {fileID: 3459079367357970698}
+  _statUpgradeCostTxt: {fileID: 3476947129794006891}
+  _statUpgradeButton: {fileID: 3459079367857201556}
 --- !u!114 &3459079368671050758
 MonoBehaviour:
   m_ObjectHideFlags: 0
