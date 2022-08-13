@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class StatEditor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] TextMeshProUGUI _statNameTxt;
+    [SerializeField] TextMeshProUGUI _statValueTxt;
+    [SerializeField] TextMeshProUGUI _statUpgradeCostTxt;
+    [SerializeField] Image _statUpgradeButton;
 
-    // Update is called once per frame
-    void Update()
+    //TODO: This approach doesn't make sense - need to reference values
+    public void SetEditedStat(string statName, string statValue, string statUpgradeCost)
     {
-        
+        _statNameTxt.text = statName;
+        _statValueTxt.text = statValue;
+        _statUpgradeCostTxt.text = statUpgradeCost;
     }
 }
