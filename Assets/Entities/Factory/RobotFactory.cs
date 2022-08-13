@@ -10,6 +10,6 @@ public class RobotFactory : MonoBehaviour
     public void SpawnRobot()
     {
         Instantiate(robot);
-        robot.GetComponent<Robot>().SeekTarget(robotDestination);
+        robot.GetComponent<WaypointModule>().SetWaypoint(robotDestination);
     }
 }
