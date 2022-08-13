@@ -9,7 +9,7 @@ public class UIAnimElement : MonoBehaviour
     [SerializeField] RectTransform _rootRect;
     [SerializeField] CanvasGroup _alphaGroup;
 
-    public bool IsIdle { get { return !_animating; } }
+    public bool IsAnimating { get { return _animating; } }
 
     Vector2 _defaultLocalPosition;
 

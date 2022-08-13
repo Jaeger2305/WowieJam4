@@ -50,9 +50,10 @@ public class UIScreen : MonoBehaviour
 
     IEnumerator DeactivateAfterAnims()
     {
-        //TODO: Fix
         foreach (var element in _animChildren) {
-            if (!element.IsIdle) yield return null;
+            while (element.IsAnimating) { 
+                yield return null; 
+            }
         }
 
         //All children idle
