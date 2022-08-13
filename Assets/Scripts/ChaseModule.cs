@@ -39,7 +39,7 @@ public class ChaseModule : MonoBehaviour
         foreach (var collider in colliders)
         {
             collider.TryGetComponent(out EntityMetadata entity);
-            if (entity == null) return null;
+            if (entity == null) break;
             if (targetEntityTypes.Contains(entity.entityType))
             {
                 _chaseTarget = collider.transform;
