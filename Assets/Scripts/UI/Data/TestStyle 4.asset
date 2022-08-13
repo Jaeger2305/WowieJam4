@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f02d455e1bc434e4088ecedc5012e0de, type: 3}
-  m_Name: TestStyle
+  m_Name: TestStyle 4
   m_EditorClassIdentifier: 
   AnimOnStart: 1
   AnimOnShow: 1
   AnimOnHide: 1
-  StartAnimEntryOffset: {x: -75, y: 40}
+  StartAnimEntryOffset: {x: 0, y: 90}
   StartAnimMotionCurve:
     serializedVersion: 2
     m_Curve:
@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   StartAnimDuration: 0.85
-  HideAnimExitOffset: {x: -90, y: 0}
+  HideAnimExitOffset: {x: 0, y: 90}
   HideAnimMotionCurve:
     serializedVersion: 2
     m_Curve:
