@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: TestStyle
   m_EditorClassIdentifier: 
   AnimOnStart: 1
-  AnimOnHide: 0
+  AnimOnShow: 1
+  AnimOnHide: 1
   StartAnimEntryOffset: {x: -75, y: 40}
   StartAnimMotionCurve:
     serializedVersion: 2
@@ -65,4 +66,73 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   StartAnimDuration: 0.85
+  HideAnimExitOffset: {x: -90, y: 0}
+  HideAnimMotionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  FadeOutOnHide: 1
+  HideAnimAlphaCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -0.08728316
+      outSlope: -0.08728316
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.80217755
+      outWeight: 0.089986466
+    - serializedVersion: 3
+      time: 0.65
+      value: 0.7
+      inSlope: -1.9049362
+      outSlope: -1.9049362
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10402575
+      outWeight: 0.062246203
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.9999999
+      outSlope: -1.9999999
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  HideAnimDuration: 0.95
   TRoundingAmount: 0.025

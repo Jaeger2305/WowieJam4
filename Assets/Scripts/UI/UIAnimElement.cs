@@ -38,11 +38,29 @@ public class UIAnimElement : MonoBehaviour
     #region Public Controls
     public void HideElement()
     {
+        if (!_style.AnimOnHide) {
+            HideElementImmediate();
+            return;
+        }
 
+        InitAnimOnHideFlyOut();
+        StartCoroutine(OnHideFlyOut());
+        StartCoroutine(HideAfterAnim());
+    }
+    public void HideElementImmediate()
+    {
+        _rootRect.gameObject.SetActive(false);
+    }
+    public void HideElementAfterDelay(float seconds)
+    {
+        StartCoroutine(HideAfterDelay(seconds));
     }
     public void ShowElement()
     {
-
+        _rootRect.gameObject.SetActive(true);
+        if (!_style.AnimOnShow) return;
+        InitAnimOnStartFlyIn();
+        StartCoroutine(OnStartFlyIn());
     }
     #endregion
 
@@ -54,6 +72,11 @@ public class UIAnimElement : MonoBehaviour
         _animStartTime = Time.time;
         _animating = true;
         if (_style.FadeInOnStart) _alphaGroup.alpha = _style.StartAnimAlphaCurve.Evaluate(0f);
+    }
+    void InitAnimOnHideFlyOut()
+    {
+        _animStartTime = Time.time;
+        _animating = true;
     }
     #endregion
     IEnumerator OnStartFlyIn()
@@ -76,6 +99,26 @@ public class UIAnimElement : MonoBehaviour
         //Animation Complete
         _animating = false;
     }
+    IEnumerator OnHideFlyOut()
+    {
+        while (Time.time < _animStartTime + _style.HideAnimDuration) {
+            //Fly to offset from default position
+            float t = RoundT((Time.time - _animStartTime) / _style.StartAnimDuration);
+            Vector2 newPos = Vector2.Lerp(
+                _defaultLocalPosition,
+                _style.HideAnimExitOffset + _defaultLocalPosition,
+                _style.HideAnimMotionCurve.Evaluate(t));
+            _rootRect.localPosition = newPos;
+
+            //Handle group alpha
+            if (_style.FadeOutOnHide) _alphaGroup.alpha = _style.HideAnimAlphaCurve.Evaluate(t);
+
+            yield return null;
+        }
+
+        //Animation Complete
+        _animating = false;
+    }
     #endregion
 
     #region Element Styling
@@ -83,6 +126,21 @@ public class UIAnimElement : MonoBehaviour
     #endregion
 
     #region Utilities
+    IEnumerator HideAfterAnim()
+    {
+        while (_animating) {
+            yield return null;
+        }
+
+        //Anim complete, hide
+        HideElementImmediate();
+    }
+    IEnumerator HideAfterDelay(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+
+        HideElement();
+    }
     float RoundT(float t)
     {
         if (t + _style.TRoundingAmount >= 1f) return 1f;
