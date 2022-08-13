@@ -5,12 +5,13 @@ using UnityEngine;
 public class DisplayController : MonoBehaviour
 {
     //Will control active canvas/canvas groups
-    [SerializeField] Canvas _customizationScreen;
+    [SerializeField] UIScreen _customizationScreen;
 
     [Header("Tutorial Elements")]
     [SerializeField] UIAnimElement _tutorialControls;
     [SerializeField] float _tutorialDisplayDuration;
 
+    bool _customizing;
 
     private void Start()
     {
@@ -20,13 +21,15 @@ public class DisplayController : MonoBehaviour
     #region Display Toggles
     public void ShowCustomizationScreen()
     {
-        _customizationScreen.enabled = true;
-        //TODO: Show all UIAnimElement children
+        //_customizationScreen.enabled = true;
+        _customizationScreen.ShowScreen();
+        _customizing = true;
     }
 
     public void HideCustomizationScreen()
     {
-        //TODO: Disable canvas after UIAnimElement children are done animating
+        _customizationScreen.HideScreen();
+        _customizing = false;
     }
     public void ShowTutorialControls()
     {
@@ -42,6 +45,7 @@ public class DisplayController : MonoBehaviour
     public void TestShowTutorial(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         if (!context.canceled) return;
-        ShowTutorialControls();
+        if (_customizing) HideCustomizationScreen();
+        else ShowCustomizationScreen();
     }
 }
