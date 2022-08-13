@@ -38,4 +38,10 @@ public class DisplayController : MonoBehaviour
         _tutorialControls.HideElement();
     }
     #endregion
+
+    public void TestShowTutorial(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        if (!context.canceled) return;
+        ShowTutorialControls();
+    }
 }
