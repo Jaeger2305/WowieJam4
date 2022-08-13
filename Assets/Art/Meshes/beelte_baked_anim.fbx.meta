@@ -16,7 +16,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eyes
-    second: {fileID: 2100000, guid: d0f6cf6ce68b05d40b2b85c35fb2b8f6, type: 2}
+    second: {fileID: 2100000, guid: f69d2f7db2354414d90ebd84be093e19, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
