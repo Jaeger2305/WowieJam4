@@ -31,12 +31,14 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        collider.TryGetComponent(out Health health);
+        if (health != null)
         {
-            collision.GetComponent<Health>().LoseHealth(damage);
+            health.LoseHealth(damage);
             Destroy(gameObject);
         }
+        // note: projectile won't ever be destroyed if it misses its target... perf issue
     }
 }
