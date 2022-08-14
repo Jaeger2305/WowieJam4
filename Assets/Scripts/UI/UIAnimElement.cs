@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UIAnimElement : MonoBehaviour
 {
     [SerializeField] UIStyleData _style;
     [SerializeField] RectTransform _rootRect;
     [SerializeField] CanvasGroup _alphaGroup;
+
+    public UnityEvent OnShowEnd;
 
     public bool IsAnimating { get { return _animating; } }
 
@@ -98,6 +100,8 @@ public class UIAnimElement : MonoBehaviour
 
         //Animation Complete
         _animating = false;
+
+        OnShowEnd?.Invoke();
     }
     IEnumerator OnHideFlyOut()
     {
