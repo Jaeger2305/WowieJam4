@@ -8,7 +8,7 @@ public class WaveData : ScriptableObject
     public int robotDamage;
     public int friendlyRobotHealth;
     public int consumptionRate;
-    public float durationSeconds;
+    public float waveDurationSeconds;
 
 
     // stretches
