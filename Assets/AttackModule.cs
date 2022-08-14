@@ -33,6 +33,11 @@ public class AttackModule : MonoBehaviour
     {
         if (cooldown <= 0)
         {
+            if (_attackTarget == null)
+            {
+                var target = SearchForTarget(); // If it's the player that triggered this, their target isn't set like the robotAI does.
+                if (target == null) return;
+            }
             cooldown += _cooldownBetweenShots;
             Projectile projectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
             projectile.Init(_attackTarget, transform, _projectileSpeed, _projectileDamage, _targetEntityTypes);

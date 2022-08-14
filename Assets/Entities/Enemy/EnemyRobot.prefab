@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 7028588021367778769}
   - component: {fileID: 4976980124445821154}
   - component: {fileID: 3608900893479686515}
+  - component: {fileID: 2608458120760304566}
   m_Layer: 0
   m_Name: EnemyRobot
   m_TagString: Untagged
@@ -604,6 +605,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   child: {fileID: 2206706734001877834}
+--- !u!114 &2608458120760304566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981014902726068451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e67ed44a503b140be8fbd2629b00fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5981014904482002523
 GameObject:
   m_ObjectHideFlags: 0
