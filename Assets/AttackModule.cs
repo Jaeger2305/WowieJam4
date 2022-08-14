@@ -51,7 +51,7 @@ public class AttackModule : MonoBehaviour
         foreach (var collider in colliders)
         {
             collider.TryGetComponent(out EntityMetadata entity);
-            if (entity == null) break;
+            if (entity == null) continue;
             if (entity != null && targetEntityTypes.Contains(entity.entityType))
             {
                 _attackTarget = collider.transform;
