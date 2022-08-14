@@ -9,6 +9,11 @@ public class RobotFactory : MonoBehaviour
 
     public List<GameObject> FriendlyRobots { get; private set; } = new List<GameObject>();
 
+    public void ConfigureFactory(int health)
+    {
+        robot.GetComponent<Health>().SetMaxHealth(health);
+    }
+
     public void SpawnRobot()
     {
         Instantiate(robot);

@@ -36,4 +36,10 @@ public class Health : MonoBehaviour
         healthChanged.Invoke(_health, amount);
         _health = System.Math.Clamp(_health + amount, 0, _maxHealth);
     }
+
+    public void SetMaxHealth(int health)
+    {
+        _maxHealth = health;
+        _health = health;
+    }
 }

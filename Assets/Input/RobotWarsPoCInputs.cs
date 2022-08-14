@@ -53,6 +53,15 @@ public partial class @RobotWarsPoCInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StartWave"",
+                    ""type"": ""Button"",
+                    ""id"": ""535891c0-9b9f-4b93-94b9-b01f1eccda03"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -154,6 +163,28 @@ public partial class @RobotWarsPoCInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""909a9b98-29b3-479d-8559-610756c3940d"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""StartWave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f4743bd-48fc-4991-a35f-b5de47237b9b"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""StartWave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -182,6 +213,7 @@ public partial class @RobotWarsPoCInputs : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_StartWave = m_Player.FindAction("StartWave", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -244,6 +276,7 @@ public partial class @RobotWarsPoCInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Action;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_StartWave;
     public struct PlayerActions
     {
         private @RobotWarsPoCInputs m_Wrapper;
@@ -251,6 +284,7 @@ public partial class @RobotWarsPoCInputs : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Action => m_Wrapper.m_Player_Action;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @StartWave => m_Wrapper.m_Player_StartWave;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,6 +303,9 @@ public partial class @RobotWarsPoCInputs : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @StartWave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartWave;
+                @StartWave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartWave;
+                @StartWave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartWave;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -282,6 +319,9 @@ public partial class @RobotWarsPoCInputs : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @StartWave.started += instance.OnStartWave;
+                @StartWave.performed += instance.OnStartWave;
+                @StartWave.canceled += instance.OnStartWave;
             }
         }
     }
@@ -300,5 +340,6 @@ public partial class @RobotWarsPoCInputs : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAction(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnStartWave(InputAction.CallbackContext context);
     }
 }
