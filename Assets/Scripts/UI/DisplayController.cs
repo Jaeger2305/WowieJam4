@@ -59,6 +59,7 @@ public class DisplayController : MonoBehaviour
 
     public void CurrencyPickupSpend()
     {
+        if (_currencyPanel.isActiveAndEnabled) return;
         ShowCurrencyPanel(true);
     }
 

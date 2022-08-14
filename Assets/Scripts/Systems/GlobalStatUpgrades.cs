@@ -21,7 +21,7 @@ public class GlobalStatUpgrades : MonoBehaviour
         Instance = this;
 
         StatBonus sbMaxHP = new StatBonus(
-        "Bonus HP",
+        "HP",
         0f,
         50f,
         0,
@@ -30,7 +30,7 @@ public class GlobalStatUpgrades : MonoBehaviour
         500);
 
         StatBonus sbAttackDamage = new StatBonus(
-            "Bonus Damage",
+            "Damage",
             0f,
             5f,
             0,
