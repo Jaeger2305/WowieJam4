@@ -7,6 +7,10 @@ public class DisplayController : MonoBehaviour
     //Will control active canvas/canvas groups
     [SerializeField] UIScreen _customizationScreen;
 
+    [Header("Currency Panel")]
+    [SerializeField] UIAnimElement _currencyPanel;
+    [SerializeField] float _durationShowCurrencyOnPickup;
+
     [Header("Tutorial Elements")]
     [SerializeField] UIAnimElement _tutorialControls;
     [SerializeField] float _tutorialDisplayDuration;
@@ -21,14 +25,15 @@ public class DisplayController : MonoBehaviour
     #region Display Toggles
     public void ShowCustomizationScreen()
     {
-        //_customizationScreen.enabled = true;
         _customizationScreen.ShowScreen();
+        _currencyPanel.ShowElement();
         _customizing = true;
     }
 
     public void HideCustomizationScreen()
     {
         _customizationScreen.HideScreen();
+        _currencyPanel.HideElement();
         _customizing = false;
     }
     public void ShowTutorialControls()
@@ -40,8 +45,21 @@ public class DisplayController : MonoBehaviour
     {
         _tutorialControls.HideElement();
     }
+    public void ShowCurrencyPanel(bool pickup = false)
+    {
+        _currencyPanel.ShowElement();
+        if (pickup) _currencyPanel.HideElementAfterDelay(_durationShowCurrencyOnPickup);
+    }
+    public void HideCurrencyPanel()
+    {
+        _currencyPanel.HideElement();
+    }
     #endregion
 
+    public void CurrencyPickupSpend()
+    {
+        ShowCurrencyPanel(true);
+    }
 
     //!!!
     //Placeholder method for testing customization screen

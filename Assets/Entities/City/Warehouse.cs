@@ -44,7 +44,13 @@ public class Warehouse : MonoBehaviour
         collider.TryGetComponent(out Inventory inventory);
         if (inventory == null) return;
 
+        //Prevent player from turning in scrap/supplies
+        //  Added to keep player reliant on collaborating with AI to win!
+        inventory.TryGetComponent(out EntityMetadata eData);
+        if (eData.entityType == EntityType.Player) return;
+
         DeliverSupplies(inventory.EmptyInventory());
-        if (collider.CompareTag("Robot")) Destroy(collider.gameObject); // Probably we want to keep the robots, but this is simpelr for now.
+        if (eData.entityType == EntityType.AlliedRobot) Destroy(collider.gameObject); // Probably we want to keep the robots, but this is simpelr for now.
+        //Changed this from comparetag since I'd already grabbed EnityMetadata
     }
 }
