@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
         this._targetEntityTypes = targetEntityTypes;
         Vector2 moveDirection = (target.position - source.position).normalized;
         projectileBody.velocity = moveDirection * speedFactor;
+        projectileBody.angularVelocity = Random.Range(-100f, 100f);
         if (moveDirection != Vector2.zero)
         {
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
