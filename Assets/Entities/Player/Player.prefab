@@ -70,10 +70,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 1045545652, guid: d39fe40d8785d5d488af349dc8475d22, type: 3}
+  m_SortingLayerID: -713100847
+  m_SortingLayer: 2
+  m_SortingOrder: 50
+  m_Sprite: {fileID: 21300000, guid: b90a538a16318534bad6c4d0d115a236, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -361,5 +361,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrapPrefab: {fileID: 1838989963862833393, guid: 5908dbe0535261b43842203c4b2dde77, type: 3}
   scrapCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  scrapSpent:
     m_PersistentCalls:
       m_Calls: []
