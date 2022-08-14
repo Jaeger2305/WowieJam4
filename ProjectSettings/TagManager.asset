@@ -48,3 +48,6 @@ TagManager:
   - name: BackgroundMid
     uniqueID: 1914451271
     locked: 0
+  - name: Overlay
+    uniqueID: 3581866449
+    locked: 0

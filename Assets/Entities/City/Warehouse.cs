@@ -27,9 +27,11 @@ public class Warehouse : MonoBehaviour
     public void ConsumeSupplies() { ConsumeSupplies(_supplyConsumption); }
     
     /** Consume a specific amount - useful for triggering on a specific event */
-    public void ConsumeSupplies(int amount) {
+    public void ConsumeSupplies(int amount)
+    {
+        int before = _supplies;
         _supplies = System.Math.Clamp(_supplies -amount, 0, _maxSupplies);
-        if (_supplies <= 0) suppliesEmpty.Invoke();
+        if (_supplies <= 0 && _supplies != before) suppliesEmpty.Invoke();
         ui.SetSupplies(_supplies);
     }
 
