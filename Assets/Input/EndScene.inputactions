@@ -1,0 +1,45 @@
+{
+    "name": "EndScene",
+    "maps": [
+        {
+            "name": "EndScene",
+            "id": "01e5035c-9803-4904-9d15-c72a3c98acf8",
+            "actions": [
+                {
+                    "name": "BackToStart",
+                    "type": "Button",
+                    "id": "dbcf529d-d103-4c3a-8554-1b965789c70d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0dd498ca-7cd5-4d92-85e6-9a0397a7156f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackToStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0935dcff-d2ef-4eb2-ae68-1c08d0e55b08",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackToStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
