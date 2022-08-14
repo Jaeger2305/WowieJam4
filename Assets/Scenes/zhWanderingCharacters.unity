@@ -733,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _customizationScreen: {fileID: 2102460640}
-  _currencyPanel: {fileID: 0}
+  _currencyPanel: {fileID: 1897424993}
   _durationShowCurrencyOnPickup: 2.15
   _tutorialControls: {fileID: 356574351}
   _tutorialDisplayDuration: 2.5
@@ -981,11 +981,11 @@ RectTransform:
   m_Father: {fileID: 149477922}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 200}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 500, y: 375}
+  m_Pivot: {x: 1, y: 0}
 --- !u!225 &356574350
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1074,7 +1074,11 @@ MonoBehaviour:
   m_text: 'Use WASD to move
 
 
-    Press Spacebar to edit robots'
+    Press Spacebar to edit robots
+
+
+    Collect Scrap
+    to spend on upgrades'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1101,7 +1105,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.75
+  m_fontSize: 23.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4972,6 +4976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1897424991}
   - component: {fileID: 1897424993}
+  - component: {fileID: 1897424994}
   - component: {fileID: 1897424992}
   m_Layer: 5
   m_Name: CurrencyPanel
@@ -5028,6 +5033,21 @@ MonoBehaviour:
   _style: {fileID: 11400000, guid: cabe9349ac109924e860105dd3dc8cbc, type: 2}
   _rootRect: {fileID: 338053245}
   _alphaGroup: {fileID: 1897424992}
+--- !u!114 &1897424994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897424990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f5fd3bf7eab6849b8a69f27b1faf86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currencyAmountText: {fileID: 1815291274}
+  _invTracked: {fileID: 2136856549}
+  _updateDuration: 1.25
 --- !u!1 &1959358216
 GameObject:
   m_ObjectHideFlags: 0
@@ -5550,6 +5570,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8342135079143502079, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
   m_PrefabInstance: {fileID: 565415817470707800}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2136856549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+  m_PrefabInstance: {fileID: 565415817470707800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9093225abcab7d4b8c974a0c02a2526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &565415817470707800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5587,14 +5618,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
@@ -5602,7 +5637,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 221764470}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1897424994}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
@@ -5610,15 +5653,31 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 221764470}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1897424994}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CurrencyPickupSpend
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartUpdateScrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
@@ -5626,19 +5685,39 @@ PrefabInstance:
       value: CurrencyPickupSpend
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartUpdateScrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DisplayController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UICurrencyDisplay, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DisplayController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UICurrencyDisplay, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapSpent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
       propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270650874908864206, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}
+      propertyPath: scrapCollected.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8342135079143502072, guid: f6a82b4f89bb21b4198ecac8395b7a48, type: 3}

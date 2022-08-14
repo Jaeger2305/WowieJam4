@@ -20,6 +20,7 @@ public class DisplayController : MonoBehaviour
     private void Start()
     {
         ShowTutorialControls();
+        _currencyPanel.HideElementAfterDelay(_durationShowCurrencyOnPickup);
     }
 
     #region Display Toggles
