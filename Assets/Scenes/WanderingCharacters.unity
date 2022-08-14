@@ -6315,14 +6315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
-    - target: {fileID: 6327413809677703108, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
-      propertyPath: slowdownDistance
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327413809677703108, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
-      propertyPath: endReachedDistance
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 6327413809677703111, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -15313,14 +15305,6 @@ PrefabInstance:
     - target: {fileID: 5981014902726068452, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5981014902726068455, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
-      propertyPath: slowdownDistance
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5981014902726068455, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
-      propertyPath: endReachedDistance
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6106489552756991028, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
       propertyPath: m_Camera
