@@ -235,7 +235,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _throwForce: 25
-  gfx: {fileID: 0}
 --- !u!50 &172942744398105537
 Rigidbody2D:
   serializedVersion: 4
@@ -266,6 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8352230970258669713}
+  - component: {fileID: 4356653042452430881}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -290,3 +290,23 @@ Transform:
   m_Father: {fileID: 2244801190272061675}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4356653042452430881
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021743869615006793}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d732f513e55c4df4faf8174f52f534a6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
