@@ -23,9 +23,9 @@ public class AudioManager : MonoBehaviour
         ie = this;
     }
 
-    public void PlayGlobalOneShot(AudioClip clip)
+    public void PlayGlobalOneShot(AudioClip clip, float volumeMult)
     {
-        _globalAudioSource.PlayOneShot(clip, _volumeScale);
+        _globalAudioSource.PlayOneShot(clip, volumeMult * _volumeScale);
     }
 
     public bool RequestSoundClearanceUI(float soundClipDuration)
