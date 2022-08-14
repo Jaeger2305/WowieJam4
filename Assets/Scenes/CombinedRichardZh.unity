@@ -973,6 +973,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!224 &793985306 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1896125519952833641, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+  m_PrefabInstance: {fileID: 1310697916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1181545266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,6 +1451,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1490880171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6327413809677703104, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+  m_PrefabInstance: {fileID: 1310697916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1490880189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490880171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc9e8af3aa7ca343b09c2727a045f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  child: {fileID: 793985306}
 --- !u!4 &1533169094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5136398959947589763, guid: dedc4ca2b7a9ec449bfc0b070c676c57, type: 3}
