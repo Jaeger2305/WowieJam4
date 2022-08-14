@@ -30,13 +30,13 @@ public class GlobalStatUpgrades : MonoBehaviour
         500);
 
         StatBonus sbAttackDamage = new StatBonus(
-            "Damage",
-            0f,
-            5f,
-            0,
-            10,
-            100,
-            1000);
+        "Damage",
+        0f,
+        5f,
+        0,
+        10,
+        100,
+        1000);
 
         StatBonuses.Add(sbMaxHP);
         StatBonuses.Add(sbAttackDamage);

@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 61646917}
   - component: {fileID: 61646916}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: ForegroundOverlayCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +216,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 809290847}
-  - {fileID: 1519023434}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -613,6 +612,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 659008839}
+  - {fileID: 1519023434}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -809,9 +809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: {fileID: 809290848}
-  _titleOutlineFluxMax: 0.295
-  _titleOutlineFluxMin: 0.189
-  _outlineFluxSpeed: 0.065
+  _gameSceneName: 
 --- !u!1 &810828406
 GameObject:
   m_ObjectHideFlags: 0
@@ -6141,6 +6139,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationScene: 0
+  loadingThisScene:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1221479495}
+        m_TargetAssemblyTypeName: FaderTransition, Assembly-CSharp
+        m_MethodName: RevealContentUnderThisSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  loadingNextScene:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1221479495}
+        m_TargetAssemblyTypeName: FaderTransition, Assembly-CSharp
+        m_MethodName: HideContentUnderThisSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1221479498
 Transform:
   m_ObjectHideFlags: 0
@@ -6171,7 +6199,7 @@ GameObject:
   - component: {fileID: 1519023436}
   - component: {fileID: 1519023435}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6190,7 +6218,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 507253137}
-  m_Father: {fileID: 61646919}
+  m_Father: {fileID: 538189282}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
