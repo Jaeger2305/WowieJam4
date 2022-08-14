@@ -12,13 +12,17 @@ public enum SoundType
 
 public class SoundPlayer : MonoBehaviour
 {
+    [SerializeField] AudioClip _defaultUIClip;
+    [SerializeField] float _defaultVolumeScale = 1f;
+
     AudioSource _as;
     AudioManager _am;
 
     private void Awake()
     {
         _am = AudioManager.ie;
-        _as = GetComponent<AudioSource>();
+        gameObject.TryGetComponent(out AudioSource asfx);
+        _as = asfx;
     }
 
     public void TryPlaySound(AudioClip sfx, SoundType soundType, float volumeScale)
@@ -45,14 +49,24 @@ public class SoundPlayer : MonoBehaviour
     //For quick events
     public void PlayCurrentWorldClip()
     {
+        if (_as == null) return;
         float s = _as.clip.length;
         if (!_am.RequestSoundClearanceWorld(s)) return;
 
         _as.Play();
     }
+    public void PlayDefaultUIClip()
+    {
+        if (_defaultUIClip == null) return;
+        float s = _as.clip.length;
+        if (!_am.RequestSoundClearanceUI(s)) return;
+
+        _am.PlayGlobalOneShot(_defaultUIClip, _defaultVolumeScale);
+    }
 
     void PlaySpatial(AudioClip sfx, float volumeScale)
     {
+        if (_as == null) return;
         _as.loop = false;
         _as.clip = sfx;
         _as.Play();
