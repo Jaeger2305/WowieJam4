@@ -12,6 +12,7 @@ public class ChaseModule : MonoBehaviour
     [SerializeField] private float _visionRange = 5f;
     [SerializeField] private float _chaseSpeed = 1f;
     [SerializeField] List<EntityType> _targetEntityTypes;
+    bool pathToTargetInitialized = false;
     public List<EntityType> targetEntityTypes { get { return _targetEntityTypes; } private set { _targetEntityTypes = value; } }
 
     private void Awake()
@@ -29,8 +30,21 @@ public class ChaseModule : MonoBehaviour
 
     public bool RefreshTarget()
     {
-        _aiDestinationSetter.target = SearchForTarget();
+        bool hadTargetLastTime = pathToTargetInitialized;
+        var target = SearchForTarget();
+        pathToTargetInitialized = target != null && !_ai.reachedEndOfPath;
+        if (target != null && !hadTargetLastTime) _ai.destination = PickRandomPointWithDistanceFromTarget(3f, target.position);
+
         return _chaseTarget != null;
+    }
+
+
+    private Vector3 PickRandomPointWithDistanceFromTarget(float distance, Vector3 target)
+    {
+        var point = Random.insideUnitCircle * distance;
+
+        point += (Vector2)target;
+        return point;
     }
 
     public Transform SearchForTarget()
