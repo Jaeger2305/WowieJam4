@@ -1403,6 +1403,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fdd73e1911247294e87d0cc855a2d353, type: 2}
   - {fileID: 11400000, guid: fdd73e1911247294e87d0cc855a2d353, type: 2}
   - {fileID: 11400000, guid: fdd73e1911247294e87d0cc855a2d353, type: 2}
+  _alliedSpawn: {fileID: 1526843434}
   _enemySpawn: {fileID: 1634311821}
   _enemyFactorySpawn: {fileID: 1584197592}
   _alliedFactorySpawn: {fileID: 1501179617}
@@ -2796,6 +2797,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 121069154}
+  - {fileID: 1634311823}
+  - {fileID: 1501179616}
+  - {fileID: 1584197590}
+  - {fileID: 1526843432}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

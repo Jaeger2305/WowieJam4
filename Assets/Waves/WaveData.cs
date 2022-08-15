@@ -5,11 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WaveConfig", menuName = "Waves/Config", order = 1)]
 public class WaveData : ScriptableObject
 {
-    public int robotDamage = 10;
-    public int friendlyRobotHealth = 200;
     public int consumptionRate = 5;
-    public int enemySpawnCount = 3;
     public float waveDurationSeconds = 20;
+    public string tutorialText;
+    public string flavourText;
 
 
     // stretches
@@ -17,4 +16,6 @@ public class WaveData : ScriptableObject
 
 
     public RobotFactoryConfig[] factoryConfigs;
+    public RobotConfig[] alliedSpawns;
+    public RobotConfig[] enemySpawns;
 }
