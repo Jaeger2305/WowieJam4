@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DisplayController : MonoBehaviour
 {
@@ -13,7 +14,12 @@ public class DisplayController : MonoBehaviour
 
     [Header("Tutorial Elements")]
     [SerializeField] UIAnimElement _tutorialControls;
+    [SerializeField] TextMeshProUGUI _tutTxt;
     [SerializeField] float _tutorialDisplayDuration;
+    [SerializeField] float _waveTutDisplayDuration;
+
+    [SerializeField] WaveRunner _waveCtrl;
+
 
     bool _customizing;
 
@@ -21,6 +27,16 @@ public class DisplayController : MonoBehaviour
     {
         ShowTutorialControls();
         _currencyPanel.HideElementAfterDelay(_durationShowCurrencyOnPickup);
+    }
+
+    public void ShowWaveTutorial()
+    {
+        var wav = _waveCtrl.GetCurrentWaveData();
+        string tut = wav.tutorialText;
+        string flav = wav.flavourText;
+        _tutTxt.text = tut + "\n\"" + flav + "\"";
+        ShowTutorialControls();
+        _tutorialControls.HideElementAfterDelay(_waveTutDisplayDuration);
     }
 
     #region Display Toggles
@@ -69,10 +85,10 @@ public class DisplayController : MonoBehaviour
     //Actual implementation of player input processing should either:
     //      Have cooldown for button press (don't process for x seconds)
     //      Or have _customizing return true if screen has not finished hiding
-    public void TestShowTutorial(UnityEngine.InputSystem.InputAction.CallbackContext context)
-    {
-        if (!context.canceled) return;
-        if (_customizing) HideCustomizationScreen();
-        else ShowCustomizationScreen();
-    }
+    //public void TestShowTutorial(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    //{
+    //    if (!context.canceled) return;
+    //    if (_customizing) HideCustomizationScreen();
+    //    else ShowCustomizationScreen();
+    //}
 }

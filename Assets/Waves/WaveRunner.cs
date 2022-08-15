@@ -7,6 +7,9 @@ using System.Linq;
 
 public class WaveRunner : MonoBehaviour
 {
+    [SerializeField] float _baseWaveDelay;
+    [SerializeField] AnimationCurve _waveDelayCurve;
+
     [SerializeField] private List<WaveData> _waves = new List<WaveData>();
     [SerializeField] private Spawner _alliedSpawn;
     [SerializeField] private Spawner _enemySpawn;
@@ -15,8 +18,15 @@ public class WaveRunner : MonoBehaviour
     [SerializeField] private Warehouse _city;
     public UnityEvent waveComplete;
     public UnityEvent allWavesComplete;
+    public UnityEvent OnNewWaveStart;
 
     public GameObject factoryPrefab;
+
+    public WaveData _activeWaveData;
+
+    float _currentWaveDuration;
+    float _lastWaveTime;
+    int _startingWaveCount;
 
     private List<RobotFactory> _factories = new List<RobotFactory>();
 
@@ -28,36 +38,51 @@ public class WaveRunner : MonoBehaviour
     private void Start()
     {
         _timer = GetComponent<Timer>();
+        _startingWaveCount = _waves.Count;
+        //StartWave();
+    }
+
+    private void Update()
+    {
+        if (_waves.Count <= 0) return;
+        int nextWaveIndex = _startingWaveCount - _waves.Count;
+        float nextWaveTime = _waveDelayCurve.Evaluate(nextWaveIndex / _startingWaveCount) * _baseWaveDelay + _lastWaveTime + _currentWaveDuration;
+        if (Time.time >= nextWaveTime) StartWave();
     }
 
     public void StartWave(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed) return;
-        StartWave();
+        return;
+        //if (!ctx.performed) return;
+        //StartWave();
     }
     public void StartWave()
     {
         Debug.Log("Starting wave");
+        _lastWaveTime = Time.time;
         if (_waves.Count == 0)
         {
             allWavesComplete.Invoke();
             return;
         }
-        var config = _waves.ElementAt(0);
+        _activeWaveData = _waves.ElementAt(0);
         _waves.RemoveAt(0);
+        _waves.TrimExcess();
 
-        _city.ConfigureWarehouse(config.startingSupplies, config.maxSupplies, config.consumptionRate, config.requiredBeetles);
+        _currentWaveDuration = _activeWaveData.waveDurationSeconds;
 
-        foreach (var robotConfig in config.alliedSpawns)
+        _city.ConfigureWarehouse(_activeWaveData.startingSupplies, _activeWaveData.maxSupplies, _activeWaveData.consumptionRate, _activeWaveData.requiredBeetles);
+
+        foreach (var robotConfig in _activeWaveData.alliedSpawns)
         {
             RobotFactory.ConfigureRobot(_enemySpawn.SpawnInCollider(_alliedPrefab), robotConfig);
         }
-        foreach (var robotConfig in config.enemySpawns)
+        foreach (var robotConfig in _activeWaveData.enemySpawns)
         {
             RobotFactory.ConfigureRobot(_enemySpawn.SpawnInCollider(_enemyPrefab), robotConfig);
         }
 
-        foreach (var factoryConfig in config.factoryConfigs)
+        foreach (var factoryConfig in _activeWaveData.factoryConfigs)
         {
             RobotFactory robotFactory;
             // If the factory doesn't already exist, create it.
@@ -88,6 +113,14 @@ public class WaveRunner : MonoBehaviour
                 _timer.slowTick.AddListener(robotFactory.SpawnRobot);
             }
         }
+
+        OnNewWaveStart?.Invoke();
+    }
+
+    public WaveData GetCurrentWaveData()
+    {
+        if (_activeWaveData == null) print($"wave data null lol. {_waves.Count} waves remaining");
+        return _activeWaveData;
     }
 
     public void StartWaveAfterSeconds(int delay)

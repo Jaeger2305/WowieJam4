@@ -21,4 +21,5 @@ public class WaveData : ScriptableObject
     public RobotFactoryConfig[] factoryConfigs;
     public RobotConfig[] alliedSpawns;
     public RobotConfig[] enemySpawns;
+
 }
