@@ -16,9 +16,9 @@ MonoBehaviour:
   startingSupplies: 150
   maxSupplies: 150
   requiredBeetles: 10
-  waveDurationSeconds: 10
-  tutorialText: Factories will continuously produce robots
-  flavourText: Now you have a factory for a constant stream of workers
+  waveDurationSeconds: 30
+  tutorialText: Do not be afraid. The bugs will prevail.
+  flavourText: Try to understand what is going on. You cannot.
   cityCount: 1
   factoryConfigs:
   - label: Enemies2

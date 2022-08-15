@@ -16,7 +16,6 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] float _defaultVolumeScale = 1f;
 
     AudioSource _as;
-    AudioManager _am;
 
 
     private void Awake()
@@ -24,26 +23,22 @@ public class SoundPlayer : MonoBehaviour
         gameObject.TryGetComponent(out AudioSource asfx);
         _as = asfx;
     }
-    private void Start()
-    {
-        _am = AudioManager.ie;
-    }
-
+   
     public void TryPlaySound(AudioClip sfx, SoundType soundType, float volumeScale)
     {
         float s = sfx.length;
         switch (soundType) {
             case SoundType.UI:
-                if (!_am.RequestSoundClearanceUI(s)) return;
-                _am.PlayGlobalOneShot(sfx, volumeScale);
+                if (!AudioManager.ie.RequestSoundClearanceUI(s)) return;
+                AudioManager.ie.PlayGlobalOneShot(sfx, volumeScale);
                 break;
             case SoundType.World:
-                if (!_am.RequestSoundClearanceWorld(s)) return;
+                if (!AudioManager.ie.RequestSoundClearanceWorld(s)) return;
                 PlaySpatial(sfx, volumeScale);
                 break;
             case SoundType.Stinger:
-                if (!_am.RequestSoundClearanceStinger(s)) return;
-                _am.PlayGlobalOneShot(sfx, volumeScale);
+                if (!AudioManager.ie.RequestSoundClearanceStinger(s)) return;
+                AudioManager.ie.PlayGlobalOneShot(sfx, volumeScale);
                 break;
             default:
                 break;
@@ -55,7 +50,7 @@ public class SoundPlayer : MonoBehaviour
     {
         if (_as == null) return;
         float s = _as.clip.length;
-        if (!_am.RequestSoundClearanceWorld(s)) return;
+        if (!AudioManager.ie.RequestSoundClearanceWorld(s)) return;
 
         _as.Play();
     }
@@ -63,16 +58,19 @@ public class SoundPlayer : MonoBehaviour
     {
         if (_defaultUIClip == null) return;
         float s = _defaultUIClip.length;
-        if (!_am.RequestSoundClearanceUI(s)) return;
+        if (!AudioManager.ie.RequestSoundClearanceUI(s)) return;
 
-        _am.PlayGlobalOneShot(_defaultUIClip, _defaultVolumeScale);
+        AudioManager.ie.PlayGlobalOneShot(_defaultUIClip, _defaultVolumeScale);
     }
 
     void PlaySpatial(AudioClip sfx, float volumeScale)
     {
+        print("playspatial");
+
         if (_as == null) return;
         _as.loop = false;
         _as.clip = sfx;
+        _as.volume = volumeScale;
         _as.Play();
     }
 }

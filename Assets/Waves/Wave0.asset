@@ -16,8 +16,8 @@ MonoBehaviour:
   startingSupplies: 70
   maxSupplies: 100
   requiredBeetles: 1
-  waveDurationSeconds: 10
-  tutorialText: Take the Bug to the city
+  waveDurationSeconds: 25
+  tutorialText: Help the bugs reach the city! The compass points the way!
   flavourText: AI is new, and needs help to become useful for civilisation
   cityCount: 1
   factoryConfigs: []

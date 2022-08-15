@@ -16,8 +16,8 @@ MonoBehaviour:
   startingSupplies: 100
   maxSupplies: 100
   requiredBeetles: 3
-  waveDurationSeconds: 10
-  tutorialText: Enemies can be killed by the player with auto-locked mouse
+  waveDurationSeconds: 30
+  tutorialText: Click to shoot the evil robo-beetles!
   flavourText: Enemy robots are also learning, and will try to steal supplies from
     your robots
   cityCount: 1

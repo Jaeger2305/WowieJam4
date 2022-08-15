@@ -20,6 +20,21 @@ public class RobotAI : MonoBehaviour
     private WaypointModule _waypointModule;
     private AttackModule _attackModule;
 
+    SoundPlayer _sp;
+    //This should definitely have been added to another class but time is short :(
+    [SerializeField] List<AudioClip> _footstepsSfx = new List<AudioClip>();
+    [SerializeField] float _stepVol;
+    [SerializeField] float _sfxStepDelayRoam;
+    [SerializeField] float _sfxStepDelayChase;
+
+    float _sfxTimeRoam;
+    float _sfxTimeChase;
+
+    private void Awake()
+    {
+        _sp = GetComponent<SoundPlayer>();
+    }
+
     private void Start()
     {
         _chaseModule = GetComponent<ChaseModule>();
@@ -39,6 +54,7 @@ public class RobotAI : MonoBehaviour
                 } else if (_waypointModule.CheckActiveWaypoint()) {
                     _state = State.Waypoint;
                 } else {
+                    PlayStepRoam();
                     _patrolModule.AdvancePatrol();
                 }
 
@@ -67,6 +83,7 @@ public class RobotAI : MonoBehaviour
                 }
                 break;
             case State.ChaseTarget:
+                PlayStepChase();
                 if(!_chaseModule.RefreshTarget())
                 {
                     _state = State.Roaming;
@@ -76,5 +93,25 @@ public class RobotAI : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    void PlayStepRoam()
+    {
+        if (Time.time < _sfxTimeRoam + _sfxStepDelayRoam) return;
+
+        var sfx = _footstepsSfx[Random.Range(0, _footstepsSfx.Count-1)];
+
+        _sp.TryPlaySound(sfx, SoundType.World, _stepVol);
+
+        _sfxTimeRoam = Time.time;
+    }
+
+    void PlayStepChase()
+    {
+        if (Time.time < _sfxTimeChase + _sfxStepDelayChase) return;
+        var sfx = _footstepsSfx[Random.Range(0, _footstepsSfx.Count-1)];
+        _sp.TryPlaySound(sfx, SoundType.World, _stepVol);
+
+        _sfxTimeChase = Time.time;
     }
 }

@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class WarehouseUI : MonoBehaviour
 {
-    private Slider _suppliesSlider;
+    [SerializeField]private Slider _suppliesSlider;
 
     void Start()
     {
-        _suppliesSlider = GetComponentInChildren<Slider>();
+        //_suppliesSlider = GetComponentInChildren<Slider>();
     }
 
     public void SetSupplies(int supplies)
