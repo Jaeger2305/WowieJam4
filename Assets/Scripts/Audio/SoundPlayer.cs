@@ -18,11 +18,15 @@ public class SoundPlayer : MonoBehaviour
     AudioSource _as;
     AudioManager _am;
 
+
     private void Awake()
     {
-        _am = AudioManager.ie;
         gameObject.TryGetComponent(out AudioSource asfx);
         _as = asfx;
+    }
+    private void Start()
+    {
+        _am = AudioManager.ie;
     }
 
     public void TryPlaySound(AudioClip sfx, SoundType soundType, float volumeScale)
@@ -58,7 +62,7 @@ public class SoundPlayer : MonoBehaviour
     public void PlayDefaultUIClip()
     {
         if (_defaultUIClip == null) return;
-        float s = _as.clip.length;
+        float s = _defaultUIClip.length;
         if (!_am.RequestSoundClearanceUI(s)) return;
 
         _am.PlayGlobalOneShot(_defaultUIClip, _defaultVolumeScale);

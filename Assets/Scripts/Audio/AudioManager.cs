@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         ie = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PlayGlobalOneShot(AudioClip clip, float volumeMult)

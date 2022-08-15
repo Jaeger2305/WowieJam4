@@ -674,6 +674,7 @@ GameObject:
   - component: {fileID: 686949629}
   - component: {fileID: 686949628}
   - component: {fileID: 686949627}
+  - component: {fileID: 686949631}
   m_Layer: 5
   m_Name: TitleAIButton
   m_TagString: Untagged
@@ -771,6 +772,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 686949631}
+        m_TargetAssemblyTypeName: SoundPlayer, Assembly-CSharp
+        m_MethodName: PlayDefaultUIClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &686949629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,6 +822,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686949625}
   m_CullTransparentMesh: 1
+--- !u!114 &686949631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686949625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b86aaea70717143b8ffd3fbe17e97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultUIClip: {fileID: 8300000, guid: cca2039d940e8954093631bf10ee70ed, type: 3}
+  _defaultVolumeScale: 0.85
 --- !u!1 &809290846
 GameObject:
   m_ObjectHideFlags: 0
@@ -6714,7 +6741,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1519023437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1519023439}
+        m_TargetAssemblyTypeName: SoundPlayer, Assembly-CSharp
+        m_MethodName: PlayDefaultUIClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1519023437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6765,6 +6804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b86aaea70717143b8ffd3fbe17e97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultUIClip: {fileID: 8300000, guid: 246996ca85b3ede42a60479e388aa58d, type: 3}
+  _defaultVolumeScale: 1
 --- !u!1 &1624505388
 GameObject:
   m_ObjectHideFlags: 0
