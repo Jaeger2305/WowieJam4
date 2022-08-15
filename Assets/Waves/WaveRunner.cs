@@ -8,6 +8,7 @@ using System.Linq;
 public class WaveRunner : MonoBehaviour
 {
     [SerializeField] private List<WaveData> _waves = new List<WaveData>();
+    [SerializeField] private Spawner _alliedSpawn;
     [SerializeField] private Spawner _enemySpawn;
     [SerializeField] private Spawner _enemyFactorySpawn;
     [SerializeField] private Spawner _alliedFactorySpawn;
@@ -40,9 +41,13 @@ public class WaveRunner : MonoBehaviour
         var config = _waves.ElementAt(0);
         _waves.RemoveAt(0);
 
-        for (int i = 0; i < config.enemySpawnCount; i++)
+        foreach (var robotConfig in config.alliedSpawns)
         {
-            _enemySpawn.SpawnInCollider(_enemyPrefab);
+            RobotFactory.ConfigureRobot(_enemySpawn.SpawnInCollider(_alliedPrefab), robotConfig);
+        }
+        foreach (var robotConfig in config.enemySpawns)
+        {
+            RobotFactory.ConfigureRobot(_enemySpawn.SpawnInCollider(_enemyPrefab), robotConfig);
         }
 
         foreach (var factoryConfig in config.factoryConfigs)
