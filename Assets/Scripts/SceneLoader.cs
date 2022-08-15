@@ -21,6 +21,8 @@ public class SceneLoader : MonoBehaviour
         Invoke("SceneLoad", secondsToWaitBeforeReloading);
         loadingNextScene.Invoke();
     }
+
+
     private void SceneLoad()
     {
         Debug.Log(string.Format("Loading scene {0} now", destinationScene));
