@@ -63,10 +63,8 @@ public class TitleScreenController : MonoBehaviour
     //    if (_title.outlineWidth < _titleOutlineFluxMin) _title.outlineWidth = _titleOutlineFluxMin;
     //}
 
-    public void StartGame()
-    {
-        SceneManager.LoadScene(_gameSceneName);
-    }
+    //TODO: Add slight float effect to title text
+
     public void NextAITitle()
     {
         if (_currentTitleIndex >= _aiTitles.Count) return;
