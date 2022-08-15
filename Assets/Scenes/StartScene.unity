@@ -331,7 +331,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6565,7 +6565,12 @@ MonoBehaviour:
   _titleLoop: {fileID: 8300000, guid: e36618784fcb8cc4ab525353ad57d22c, type: 3}
   _gameTrack1: {fileID: 8300000, guid: aefdb2ff869c95745a113bb556b0786c, type: 3}
   _gameTrack1Add: {fileID: 8300000, guid: aefdb2ff869c95745a113bb556b0786c, type: 3}
+  _combatTrack1: {fileID: 8300000, guid: cfc07684df2e5f94a8e3e39403947ee5, type: 3}
+  _combatTrack1Add: {fileID: 8300000, guid: 29cc1ab81b5e1f140a4f326925c2987d, type: 3}
+  _combatTrack2: {fileID: 8300000, guid: 626ef26aa41fe7643a7d09f8e9ab86d7, type: 3}
+  _combatTrack2Add: {fileID: 8300000, guid: 956f8a92da97af4478d5709fd260c8d7, type: 3}
   _gamePlayTransitionDuration: 1.15
+  _combatWaveTransitionDuration: 0.5
   _musicVolumeMult: 0.4
   _musicSourcePrimary: {fileID: 975944034}
   _musicSourceSecondary: {fileID: 196522034}

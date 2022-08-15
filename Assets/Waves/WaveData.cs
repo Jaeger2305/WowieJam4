@@ -17,6 +17,8 @@ public class WaveData : ScriptableObject
     // stretches
     public int cityCount = 1;
 
+    public int WaveID;
+
 
     public RobotFactoryConfig[] factoryConfigs;
     public RobotConfig[] alliedSpawns;

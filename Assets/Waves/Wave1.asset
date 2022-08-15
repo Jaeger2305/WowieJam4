@@ -21,6 +21,7 @@ MonoBehaviour:
   flavourText: Enemy robots are also learning, and will try to steal supplies from
     your robots
   cityCount: 1
+  WaveID: 1
   factoryConfigs: []
   alliedSpawns:
   - entityType: 1

@@ -13,6 +13,8 @@ public class MusicGroup
 
 public class MusicController : MonoBehaviour
 {
+    public static MusicController ie;
+
     [Header("Tracklist")]
     [SerializeField] AudioClip _titleIntro;
     [SerializeField] AudioClip _titleLoop;
@@ -20,6 +22,8 @@ public class MusicController : MonoBehaviour
     [SerializeField] AudioClip _gameTrack1Add;
     [SerializeField] AudioClip _combatTrack1;
     [SerializeField] AudioClip _combatTrack1Add;
+    [SerializeField] AudioClip _combatTrack2;
+    [SerializeField] AudioClip _combatTrack2Add;
     [Header("Track Settings")]
     [SerializeField] float _gamePlayTransitionDuration;
     [SerializeField] float _combatWaveTransitionDuration;
@@ -36,7 +40,10 @@ public class MusicController : MonoBehaviour
     float _timeFadeStart;
     float _timePrimaryStart;
     float _timeSecondaryStart;
-
+    private void Awake()
+    {
+        ie = this;
+    }
     private void Start()
     {
         //Start Title Music
@@ -52,6 +59,14 @@ public class MusicController : MonoBehaviour
     public void CombatWaveStart()
     {
         StartCoroutine(FadeIntoSynchronous(_combatWaveTransitionDuration, _combatTrack1, _combatTrack1Add, true, _defaultFadeDuration));
+    }
+    public void TriggerSecondary()
+    {
+        StartCoroutine(FadeVolume(true, _musicSourceSecondary, Time.time, _defaultFadeDuration));
+    }
+    public void FinalWaveStart()
+    {
+        StartCoroutine(FadeIntoSynchronous(_combatWaveTransitionDuration, _combatTrack2, _combatTrack2Add, false, _defaultFadeDuration));
     }
     #endregion
     #region General Music Control

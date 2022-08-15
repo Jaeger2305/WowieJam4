@@ -20,6 +20,7 @@ MonoBehaviour:
   tutorialText: Factories will continuously produce robots!
   flavourText: Now you have a factory for a constant stream of workers!
   cityCount: 1
+  WaveID: 2
   factoryConfigs:
   - label: Enemies
     robot: {fileID: 5981014902726068451, guid: 4a119b431ecb1324c947c757483b771e, type: 3}

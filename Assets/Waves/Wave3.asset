@@ -20,6 +20,7 @@ MonoBehaviour:
   tutorialText: Do not be afraid. The bugs will prevail.
   flavourText: Try to understand what is going on. You cannot.
   cityCount: 1
+  WaveID: 3
   factoryConfigs:
   - label: Enemies2
     robot: {fileID: 5981014902726068451, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
