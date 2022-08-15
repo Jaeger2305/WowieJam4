@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currencyAmountText: {fileID: 1801167425}
-  _invTracked: {fileID: 0}
+  _invTracked: {fileID: 2136856549}
   _updateDuration: 1.25
 --- !u!114 &559767902
 MonoBehaviour:
