@@ -3,6 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+
+[System.Serializable] public struct AttackModuleConfig
+{
+    [SerializeField] public EntityType[] attackTargets;
+    [SerializeField] public float attackRange;
+    [SerializeField] public int projectileSpeed;
+    [SerializeField] public int projectileDamage;
+    [SerializeField] public float cooldownBetweenShots;
+    public AttackModuleConfig(float attackRange, float cooldownBetweenShots, int projectileSpeed, int projectileDamage, EntityType[] attackTargets)
+    {
+        this.attackTargets = attackTargets;
+        this.attackRange = attackRange;
+        this.projectileSpeed = projectileSpeed;
+        this.projectileDamage = projectileDamage;
+        this.cooldownBetweenShots = cooldownBetweenShots;
+    }
+}
 public class AttackModule : MonoBehaviour
 {
     public GameObject projectilePrefab;
@@ -15,13 +33,13 @@ public class AttackModule : MonoBehaviour
     [SerializeField] List<EntityType> _targetEntityTypes;
     public List<EntityType> targetEntityTypes { get { return _targetEntityTypes; } private set { _targetEntityTypes = value; } }
 
-    public void ConfigureModule(float range, float cooldownBetweenShots, int projectileSpeed, int projectileDamage, EntityType[] chaseTargets)
+    public void ConfigureModule(AttackModuleConfig config)
     {
-        _attackRange = range;
-        _cooldownBetweenShots = cooldownBetweenShots;
-        _projectileSpeed = projectileSpeed;
-        _projectileDamage = projectileDamage;
-        _targetEntityTypes = new List<EntityType>(chaseTargets);
+        _attackRange = config.attackRange;
+        _cooldownBetweenShots = config.cooldownBetweenShots;
+        _projectileSpeed = config.projectileSpeed;
+        _projectileDamage = config.projectileDamage;
+        _targetEntityTypes = new List<EntityType>(config.attackTargets);
     }
 
     private void Update()

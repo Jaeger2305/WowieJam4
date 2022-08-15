@@ -555,6 +555,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6611676686123712642}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   healthChanged:
     m_PersistentCalls:
       m_Calls:
@@ -582,8 +594,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _health: 100
-  _maxHealth: 100
+  _health: 200
+  _maxHealth: 200
 --- !u!114 &8371334924208289625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,8 +647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _visionRange: 5
-  _chaseSpeed: 1
-  _targetEntityTypes: 
+  _chaseSpeed: 2
+  _targetEntityTypes: 02000000
 --- !u!114 &1492234949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,11 +676,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8026358160752979157, guid: f2ad2b0d6e0371e4a90c1beed17efe49, type: 3}
-  _cooldownBetweenShots: 0.5
+  _cooldownBetweenShots: 1
   _attackRange: 5
-  _projectileDamage: 15
+  _projectileDamage: 5
   _projectileSpeed: 5
-  _targetEntityTypes: 00000000
+  _targetEntityTypes: 
 --- !u!114 &6016894517328857606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b1ba6e23e072b43b5376729a911bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 1
+  _entityType: 0
   _label: 
 --- !u!114 &4108919232761026468
 MonoBehaviour:
