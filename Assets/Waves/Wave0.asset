@@ -13,19 +13,22 @@ MonoBehaviour:
   m_Name: Wave0
   m_EditorClassIdentifier: 
   consumptionRate: 0
+  startingSupplies: 70
+  maxSupplies: 100
+  requiredBeetles: 1
   waveDurationSeconds: 10
-  tutorialText: 
-  flavourText: 
+  tutorialText: Take the Bug to the city
+  flavourText: AI is new, and needs help to become useful for civilisation
   cityCount: 1
   factoryConfigs: []
   alliedSpawns:
   - entityType: 1
     health: 10
-    scrap: 20
+    scrap: 30
     chaseConfig:
       chaseTargets: 02000000
-      visionRange: 5
-      chaseSpeed: 1
+      visionRange: 12
+      chaseSpeed: 4
     attackConfig:
       attackTargets: 
       attackRange: 0

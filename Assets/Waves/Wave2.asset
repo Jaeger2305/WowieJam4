@@ -13,27 +13,62 @@ MonoBehaviour:
   m_Name: Wave2
   m_EditorClassIdentifier: 
   consumptionRate: 5
-  enemySpawnCount: 2
-  alliedSpawnCount: 3
+  startingSupplies: 150
+  maxSupplies: 150
+  requiredBeetles: 10
   waveDurationSeconds: 10
-  tutorialText: 
-  flavourText: 
+  tutorialText: Factories will continuously produce robots
+  flavourText: Now you have a factory for a constant stream of workers
   cityCount: 1
   factoryConfigs:
-  - label: Leeds
+  - label: Enemies
     robot: {fileID: 5981014902726068451, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
-    entityType: 0
-    health: 100
-    scrap: 40
-    capacity: 2
+    capacity: 10
     spawnSpeed: 2
+    robotConfig:
+      entityType: 0
+      health: 60
+      scrap: 30
+      chaseConfig:
+        chaseTargets: 01000000
+        visionRange: 12
+        chaseSpeed: 5
+      attackConfig:
+        attackTargets: 01000000
+        attackRange: 5
+        projectileSpeed: 10
+        projectileDamage: 10
+        cooldownBetweenShots: 1
+  - label: Friendlies
+    robot: {fileID: 6327413809677703104, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+    capacity: 10
+    spawnSpeed: 1
+    robotConfig:
+      entityType: 1
+      health: 60
+      scrap: 30
+      chaseConfig:
+        chaseTargets: 0000000002000000
+        visionRange: 12
+        chaseSpeed: 5
+      attackConfig:
+        attackTargets: 01000000
+        attackRange: 5
+        projectileSpeed: 10
+        projectileDamage: 10
+        cooldownBetweenShots: 1
+  alliedSpawns: []
+  enemySpawns:
+  - entityType: 0
+    health: 40
+    scrap: 20
     chaseConfig:
-      chaseTargets: 02000000
+      chaseTargets: 01000000
       visionRange: 7
-      chaseSpeed: 10
+      chaseSpeed: 3
     attackConfig:
       attackTargets: 01000000
       attackRange: 5
-      projectileSpeed: 6
+      projectileSpeed: 7
       projectileDamage: 10
-      cooldownBetweenShots: 0.5
+      cooldownBetweenShots: 0

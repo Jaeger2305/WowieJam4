@@ -33,6 +33,10 @@ public class WaveRunner : MonoBehaviour
     public void StartWave(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;
+        StartWave();
+    }
+    public void StartWave()
+    {
         Debug.Log("Starting wave");
         if (_waves.Count == 0)
         {
@@ -42,7 +46,7 @@ public class WaveRunner : MonoBehaviour
         var config = _waves.ElementAt(0);
         _waves.RemoveAt(0);
 
-        _city.ConfigureWarehouse(config.startingSupplies, config.maxSupplies, config.consumptionRate);
+        _city.ConfigureWarehouse(config.startingSupplies, config.maxSupplies, config.consumptionRate, config.requiredBeetles);
 
         foreach (var robotConfig in config.alliedSpawns)
         {
@@ -84,10 +88,13 @@ public class WaveRunner : MonoBehaviour
                 _timer.slowTick.AddListener(robotFactory.SpawnRobot);
             }
         }
+    }
 
+    public void StartWaveAfterSeconds(int delay)
+    {
         // Automatically start the next wave with no pause.
         // If we want to use the "chill" music assets, we could add in an artificial delay here
         // Maybe we check the scene if there are no enemies, and swap the music then?
-        Invoke("StartWave", config.waveDurationSeconds);
+        Invoke("StartWave", delay);
     }
 }

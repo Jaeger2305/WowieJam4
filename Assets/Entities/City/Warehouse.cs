@@ -6,8 +6,11 @@ using UnityEngine.Events;
 public class Warehouse : MonoBehaviour
 {
     public UnityEvent suppliesEmpty;
+    public UnityEvent sufficientBeetles;
+    public UnityEvent<string> outstandingBeetles;
     [SerializeField] private int _supplies = 100;
     [SerializeField] private int _maxSupplies = 100;
+    [SerializeField] private int _requiredBeetles = 5;
     private WarehouseUI ui;
 
     void Start()
@@ -23,11 +26,13 @@ public class Warehouse : MonoBehaviour
     }
     [SerializeField] private int _supplyConsumption = 10;
 
-    public void ConfigureWarehouse(int supplies, int maxSupplies, int consumptionRate)
+    public void ConfigureWarehouse(int supplies, int maxSupplies, int consumptionRate, int requiredBeetles)
     {
         _supplies = supplies;
         _maxSupplies = maxSupplies;
         _supplyConsumption = consumptionRate;
+        _requiredBeetles = requiredBeetles;
+        outstandingBeetles.Invoke($"{_requiredBeetles}"); // event this as text so it's super easy to hook some UI into this.
     }
 
     /** Consume the standard amount from the class' config- useful for consuming overtime on a game tick. */
@@ -46,6 +51,14 @@ public class Warehouse : MonoBehaviour
     {
         _supplies = System.Math.Clamp(_supplies + amount, 0, _maxSupplies);
         ui.SetSupplies(_supplies);
+
+        if (_requiredBeetles > 0)
+        {
+            _requiredBeetles -= 1;
+            if (_requiredBeetles == 0) sufficientBeetles.Invoke();
+
+            outstandingBeetles.Invoke($"{_requiredBeetles}"); // event this as text so it's super easy to hook some UI into this.
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

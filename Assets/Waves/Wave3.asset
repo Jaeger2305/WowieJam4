@@ -13,27 +13,44 @@ MonoBehaviour:
   m_Name: Wave3
   m_EditorClassIdentifier: 
   consumptionRate: 5
-  enemySpawnCount: 2
-  alliedSpawnCount: 3
+  startingSupplies: 150
+  maxSupplies: 150
+  requiredBeetles: 10
   waveDurationSeconds: 10
-  tutorialText: 
-  flavourText: 
+  tutorialText: Factories will continuously produce robots
+  flavourText: Now you have a factory for a constant stream of workers
   cityCount: 1
   factoryConfigs:
-  - label: Sheffield
-    robot: {fileID: 6327413809677703104, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
-    entityType: 1
-    health: 200
-    scrap: 50
-    capacity: 10
-    spawnSpeed: 0
+  - label: Enemies2
+    robot: {fileID: 5981014902726068451, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
+    capacity: 20
+    spawnSpeed: 2
+    robotConfig:
+      entityType: 0
+      health: 60
+      scrap: 20
+      chaseConfig:
+        chaseTargets: 02000000
+        visionRange: 12
+        chaseSpeed: 3
+      attackConfig:
+        attackTargets: 01000000
+        attackRange: 6
+        projectileSpeed: 8
+        projectileDamage: 10
+        cooldownBetweenShots: 0.3
+  alliedSpawns: []
+  enemySpawns:
+  - entityType: 0
+    health: 40
+    scrap: 20
     chaseConfig:
-      chaseTargets: 02000000
-      visionRange: 10
+      chaseTargets: 01000000
+      visionRange: 7
       chaseSpeed: 3
     attackConfig:
-      attackTargets: 
-      attackRange: 0
-      projectileSpeed: 0
-      projectileDamage: 0
+      attackTargets: 01000000
+      attackRange: 5
+      projectileSpeed: 7
+      projectileDamage: 10
       cooldownBetweenShots: 0

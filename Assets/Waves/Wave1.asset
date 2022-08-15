@@ -12,28 +12,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb2008fd7c7119458c819754af524dc, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  consumptionRate: 5
-  enemySpawnCount: 1
-  alliedSpawnCount: 3
+  consumptionRate: 1
+  startingSupplies: 100
+  maxSupplies: 100
+  requiredBeetles: 3
   waveDurationSeconds: 10
-  tutorialText: 
-  flavourText: 
+  tutorialText: Enemies can be killed by the player with auto-locked mouse
+  flavourText: Enemy robots are also learning, and will try to steal supplies from
+    your robots
   cityCount: 1
-  factoryConfigs:
-  - label: Leeds
-    robot: {fileID: 5981014902726068451, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
-    entityType: 0
-    health: 50
+  factoryConfigs: []
+  alliedSpawns:
+  - entityType: 1
+    health: 20
     scrap: 30
-    capacity: 5
-    spawnSpeed: 2
     chaseConfig:
       chaseTargets: 02000000
-      visionRange: 5
-      chaseSpeed: 8
+      visionRange: 12
+      chaseSpeed: 4
+    attackConfig:
+      attackTargets: 
+      attackRange: 0
+      projectileSpeed: 0
+      projectileDamage: 0
+      cooldownBetweenShots: 0
+  - entityType: 1
+    health: 20
+    scrap: 30
+    chaseConfig:
+      chaseTargets: 02000000
+      visionRange: 12
+      chaseSpeed: 4
+    attackConfig:
+      attackTargets: 
+      attackRange: 0
+      projectileSpeed: 0
+      projectileDamage: 0
+      cooldownBetweenShots: 0
+  - entityType: 1
+    health: 20
+    scrap: 30
+    chaseConfig:
+      chaseTargets: 02000000
+      visionRange: 12
+      chaseSpeed: 4
+    attackConfig:
+      attackTargets: 
+      attackRange: 0
+      projectileSpeed: 0
+      projectileDamage: 0
+      cooldownBetweenShots: 0
+  - entityType: 1
+    health: 20
+    scrap: 30
+    chaseConfig:
+      chaseTargets: 02000000
+      visionRange: 12
+      chaseSpeed: 4
+    attackConfig:
+      attackTargets: 
+      attackRange: 0
+      projectileSpeed: 0
+      projectileDamage: 0
+      cooldownBetweenShots: 0
+  - entityType: 1
+    health: 20
+    scrap: 30
+    chaseConfig:
+      chaseTargets: 02000000
+      visionRange: 12
+      chaseSpeed: 4
+    attackConfig:
+      attackTargets: 
+      attackRange: 0
+      projectileSpeed: 0
+      projectileDamage: 0
+      cooldownBetweenShots: 0
+  enemySpawns:
+  - entityType: 0
+    health: 30
+    scrap: 0
+    chaseConfig:
+      chaseTargets: 02000000
+      visionRange: 15
+      chaseSpeed: 3
     attackConfig:
       attackTargets: 01000000
-      attackRange: 3
-      projectileSpeed: 4
+      attackRange: 7
+      projectileSpeed: 10
       projectileDamage: 5
-      cooldownBetweenShots: 0.5
+      cooldownBetweenShots: 0.8
