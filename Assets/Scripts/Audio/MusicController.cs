@@ -117,6 +117,7 @@ public class MusicController : MonoBehaviour
         StartCoroutine(FadeVolume(true, source, Time.time, _defaultFadeDuration));
     }
 
+    
     IEnumerator OneShotIntroLoop(AudioSource source, AudioClip oneShot, AudioClip nextTrack, float fadeDuration)
     {
         _musicSourceOneShots.PlayOneShot(oneShot, _musicVolumeMult);

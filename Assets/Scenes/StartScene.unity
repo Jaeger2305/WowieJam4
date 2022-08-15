@@ -6563,7 +6563,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _titleIntro: {fileID: 8300000, guid: 417731d1bb1716f4f975974ba73fda39, type: 3}
   _titleLoop: {fileID: 8300000, guid: e36618784fcb8cc4ab525353ad57d22c, type: 3}
-  _gameTrack1: {fileID: 0}
+  _gameTrack1: {fileID: 8300000, guid: aefdb2ff869c95745a113bb556b0786c, type: 3}
+  _gameTrack1Add: {fileID: 8300000, guid: aefdb2ff869c95745a113bb556b0786c, type: 3}
+  _gamePlayTransitionDuration: 0
   _musicVolumeMult: 1
   _musicSourcePrimary: {fileID: 975944034}
   _musicSourceSecondary: {fileID: 196522034}
@@ -6954,6 +6956,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1519023439}
         m_TargetAssemblyTypeName: SoundPlayer, Assembly-CSharp
         m_MethodName: PlayDefaultUIClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1064984790}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: GameStartTriggerMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
