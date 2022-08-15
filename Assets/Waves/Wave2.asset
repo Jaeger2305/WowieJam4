@@ -72,4 +72,4 @@ MonoBehaviour:
       attackRange: 5
       projectileSpeed: 7
       projectileDamage: 10
-      cooldownBetweenShots: 0
+      cooldownBetweenShots: 0.5

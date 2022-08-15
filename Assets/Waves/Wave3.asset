@@ -18,7 +18,7 @@ MonoBehaviour:
   requiredBeetles: 10
   waveDurationSeconds: 30
   tutorialText: Do not be afraid. The bugs will prevail.
-  flavourText: Try to understand what is going on. You cannot.
+  flavourText: Try to understand what is going on. You cannot. They can shoot now.
   cityCount: 1
   WaveID: 3
   factoryConfigs:
@@ -54,4 +54,4 @@ MonoBehaviour:
       attackRange: 5
       projectileSpeed: 7
       projectileDamage: 10
-      cooldownBetweenShots: 0
+      cooldownBetweenShots: 0.5
