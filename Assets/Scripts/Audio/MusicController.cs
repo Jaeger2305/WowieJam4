@@ -13,7 +13,7 @@ public class MusicGroup
 
 public class MusicController : MonoBehaviour
 {
-    public static MusicController ie;
+    public static MusicController Instance;
 
     [Header("Tracklist")]
     [SerializeField] AudioClip _titleIntro;
@@ -24,6 +24,10 @@ public class MusicController : MonoBehaviour
     [SerializeField] AudioClip _combatTrack1Add;
     [SerializeField] AudioClip _combatTrack2;
     [SerializeField] AudioClip _combatTrack2Add;
+    [Header("Stingers")]
+    [SerializeField] AudioClip _stingerVictory;
+    [SerializeField] AudioClip _loopVictory;
+    [SerializeField] AudioClip _stingerDefeat;
     [Header("Track Settings")]
     [SerializeField] float _gamePlayTransitionDuration;
     [SerializeField] float _combatWaveTransitionDuration;
@@ -36,13 +40,19 @@ public class MusicController : MonoBehaviour
     [SerializeField] AnimationCurve _volFadeOutCurve;
     [SerializeField] float _defaultFadeDuration;
     [SerializeField] float _defaultCrossfadeDuration;
+    [SerializeField] float _gameEndFadeDuration;
 
     float _timeFadeStart;
     float _timePrimaryStart;
     float _timeSecondaryStart;
     private void Awake()
     {
-        ie = this;
+        if (Instance != null && Instance != this) {
+            Destroy(this);
+        }
+        else {
+            Instance = this;
+        }
     }
     private void Start()
     {
@@ -67,6 +77,23 @@ public class MusicController : MonoBehaviour
     public void FinalWaveStart()
     {
         StartCoroutine(FadeIntoSynchronous(_combatWaveTransitionDuration, _combatTrack2, _combatTrack2Add, false, _defaultFadeDuration));
+    }
+    #endregion
+    #region Stingers
+    public void PlayStingerGameWon()
+    {
+        StartCoroutine(FadeVolume(false, _musicSourcePrimary, Time.time, _gameEndFadeDuration));
+        StartCoroutine(FadeVolume(false, _musicSourceSecondary, Time.time, _gameEndFadeDuration));
+        //SelfDestructStinger(_stingerVictory);
+        StartCoroutine(OneShotIntroLoop(_musicSourcePrimary, _stingerVictory, _loopVictory, _defaultCrossfadeDuration));
+        
+    }
+    public void PlayStingerGameLost()
+    {
+        StartCoroutine(FadeVolume(false, _musicSourcePrimary, Time.time, _gameEndFadeDuration));
+        StartCoroutine(FadeVolume(false, _musicSourceSecondary, Time.time, _gameEndFadeDuration));
+        //SelfDestructStinger(_stingerDefeat);
+        _musicSourceOneShots.PlayOneShot(_stingerDefeat, _musicVolumeMult);
     }
     #endregion
     #region General Music Control
@@ -170,6 +197,17 @@ public class MusicController : MonoBehaviour
         _musicSourcePrimary.Play();
         _musicSourceSecondary.Play();
         StartCoroutine(FadeVolume(true, _musicSourcePrimary, Time.time, totalFadeDuration * 0.5f));
+    }
+
+    IEnumerator SelfDestructStinger(AudioClip stinger)
+    {
+        //I wonder if we can even do this
+        float s = stinger.length;
+        _musicSourceOneShots.PlayOneShot(stinger);
+
+        yield return new WaitForSeconds(s);
+
+        Destroy(gameObject);    //There can be only one...
     }
 
     #endregion

@@ -56,6 +56,8 @@ public class WaveRunner : MonoBehaviour
         //if (!ctx.performed) return;
         //StartWave();
     }
+
+    [ContextMenu("DEBUG START NEXT WAVE")]
     public void StartWave()
     {
         Debug.Log("Starting wave");

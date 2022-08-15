@@ -14,7 +14,7 @@ public class AudioWaveInterceptor : MonoBehaviour
                 StartWave1();
                 break;
             case 2:
-                MusicController.ie.TriggerSecondary();
+                MusicController.Instance.TriggerSecondary();
                 break;
             case 3:
                 StartWave3();
@@ -25,10 +25,10 @@ public class AudioWaveInterceptor : MonoBehaviour
     }
     public void StartWave1()
     {
-        MusicController.ie.CombatWaveStart();
+        MusicController.Instance.CombatWaveStart();
     }
     public void StartWave3()
     {
-        MusicController.ie.FinalWaveStart();
+        MusicController.Instance.FinalWaveStart();
     }
 }
