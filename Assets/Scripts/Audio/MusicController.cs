@@ -17,6 +17,9 @@ public class MusicController : MonoBehaviour
     [SerializeField] AudioClip _titleIntro;
     [SerializeField] AudioClip _titleLoop;
     [SerializeField] AudioClip _gameTrack1;
+    [SerializeField] AudioClip _gameTrack1Add;
+    [Header("Track Settings")]
+    [SerializeField] float _gamePlayTransitionDuration;
     [Header("Controller Settings")]
     [SerializeField][Range(0.01f,1f)] float _musicVolumeMult = 1f;
     [SerializeField] AudioSource _musicSourcePrimary;
@@ -35,11 +38,14 @@ public class MusicController : MonoBehaviour
     {
         //Start Title Music
         StartCoroutine(OneShotIntroLoop(_musicSourcePrimary, _titleIntro, _titleLoop, _titleIntro.length*0.6f));
-        //MusicPlayPrimary(true, false, _titleIntro);
-        //StartCoroutine(FadeVolume(false, _musicSourcePrimary, Time.time, _titleIntro.length));
-        //StartCoroutine(QueueTrack(_musicSourcePrimary, _titleLoop, _titleIntro.length, false, true));
     }
 
+    #region Music Triggers
+    public void GameStartTriggerMusic()
+    {
+        StartCoroutine(FadeIntoSynchronous(_gamePlayTransitionDuration, _gameTrack1, _gameTrack1Add, true, _defaultFadeDuration));
+    }
+    #endregion
     #region General Music Control
     public void MusicPlayPrimary(bool fadeIn, bool loop, AudioClip track = null)
     {
@@ -123,8 +129,10 @@ public class MusicController : MonoBehaviour
         StartCoroutine(FadeVolume(true, source, Time.time, fadeDuration));
     }
 
-    IEnumerator FadeIntoSynchronous(AudioClip primary, AudioClip secondary, bool muteSecondary, float totalFadeDuration)
+    IEnumerator FadeIntoSynchronous(float initialDelay, AudioClip primary, AudioClip secondary, bool muteSecondary, float totalFadeDuration)
     {
+        yield return new WaitForSeconds(initialDelay);
+
         float syncTime = Time.time;
 
         StartCoroutine(FadeVolume(false, _musicSourcePrimary, syncTime, totalFadeDuration * 0.5f));
