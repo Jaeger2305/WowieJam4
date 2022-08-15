@@ -6,7 +6,6 @@ using UnityEngine;
 public class WaveData : ScriptableObject
 {
     public int consumptionRate = 5;
-    public int enemySpawnCount = 3;
     public float waveDurationSeconds = 20;
     public string tutorialText;
     public string flavourText;
@@ -17,4 +16,6 @@ public class WaveData : ScriptableObject
 
 
     public RobotFactoryConfig[] factoryConfigs;
+    public RobotConfig[] alliedSpawns;
+    public RobotConfig[] enemySpawns;
 }

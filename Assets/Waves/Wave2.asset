@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb2008fd7c7119458c819754af524dc, type: 3}
   m_Name: Wave2
   m_EditorClassIdentifier: 
-  robotDamage: 5
-  friendlyRobotHealth: 200
   consumptionRate: 5
   enemySpawnCount: 2
+  alliedSpawnCount: 3
   waveDurationSeconds: 10
+  tutorialText: 
+  flavourText: 
   cityCount: 1
   factoryConfigs:
   - label: Leeds
@@ -24,6 +25,7 @@ MonoBehaviour:
     entityType: 0
     health: 100
     scrap: 40
+    capacity: 2
     spawnSpeed: 2
     chaseConfig:
       chaseTargets: 02000000

@@ -13,23 +13,34 @@ public struct RobotFactoryConfig
 {
     [SerializeField] public string label;
     [SerializeField] public GameObject robot;
-    [SerializeField] public EntityType entityType;
-    [SerializeField] public int health;
-    [SerializeField] public int scrap;
     [SerializeField] public int capacity;
     [SerializeField] public TickSpeed spawnSpeed;
+    [SerializeField] public RobotConfig robotConfig;
 
-    [SerializeField] public ChaseModuleConfig chaseConfig;
-    [SerializeField] public AttackModuleConfig attackConfig;
-    public RobotFactoryConfig(string label, GameObject robot, EntityType entityType, int health, int scrap, int capacity, TickSpeed spawnSpeed, ChaseModuleConfig chaseConfig, AttackModuleConfig attackConfig)
+    public RobotFactoryConfig(string label, GameObject robot, int capacity, TickSpeed spawnSpeed, RobotConfig robotConfig)
     {
         this.label = label;
         this.robot = robot;
+        this.capacity = capacity;
+        this.spawnSpeed = spawnSpeed;
+        this.robotConfig = robotConfig;
+    }
+}
+
+[System.Serializable]
+public struct RobotConfig
+{
+    [SerializeField] public EntityType entityType;
+    [SerializeField] public int health;
+    [SerializeField] public int scrap;
+
+    [SerializeField] public ChaseModuleConfig chaseConfig;
+    [SerializeField] public AttackModuleConfig attackConfig;
+    public RobotConfig(EntityType entityType, int health, int scrap, ChaseModuleConfig chaseConfig, AttackModuleConfig attackConfig)
+    {
         this.entityType = entityType;
         this.health = health;
         this.scrap = scrap;
-        this.capacity = capacity;
-        this.spawnSpeed = spawnSpeed;
         this.chaseConfig = chaseConfig;
         this.attackConfig = attackConfig;
     }
@@ -46,17 +57,23 @@ public class RobotFactory : MonoBehaviour
 
     public List<GameObject> FriendlyRobots { get; private set; } = new List<GameObject>();
 
-    public void ConfigureFactory(RobotFactoryConfig config)
+    /** There's no dedicated robot script, so just collect this as a static function here for convenience, for use in the wave runner */
+    public static void ConfigureRobot(GameObject gameObject, RobotConfig robotConfig)
     {
-        label = config.label;
-        robot = config.robot;
-        capacity = config.capacity;
-        robot.GetComponent<Health>().SetMaxHealth(config.health);
-        robot.GetComponent<Inventory>().AddScrap(config.scrap);
-        robot.GetComponent<EntityMetadata>().SetEntityType(config.entityType);
-        robot.GetComponent<ChaseModule>().ConfigureModule(config.chaseConfig);
-        robot.GetComponent<AttackModule>().ConfigureModule(config.attackConfig);
-        robot.GetComponent<PatrolModule>().ConfigureModule(5f, 10f);
+        gameObject.GetComponent<Health>().SetMaxHealth(robotConfig.health);
+        gameObject.GetComponent<Inventory>().AddScrap(robotConfig.scrap);
+        gameObject.GetComponent<EntityMetadata>().SetEntityType(robotConfig.entityType);
+        gameObject.GetComponent<ChaseModule>().ConfigureModule(robotConfig.chaseConfig);
+        gameObject.GetComponent<AttackModule>().ConfigureModule(robotConfig.attackConfig);
+        gameObject.GetComponent<PatrolModule>().ConfigureModule(5f, 10f);
+    }
+
+    public void ConfigureFactory(RobotFactoryConfig factoryConfig)
+    {
+        label = factoryConfig.label;
+        robot = factoryConfig.robot;
+        capacity = factoryConfig.capacity;
+        ConfigureRobot(robot, factoryConfig.robotConfig);
     }
 
     public void SpawnRobot()
