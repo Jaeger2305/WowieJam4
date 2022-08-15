@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb2008fd7c7119458c819754af524dc, type: 3}
+  m_Name: Wave4
+  m_EditorClassIdentifier: 
+  consumptionRate: 5
+  startingSupplies: 250
+  maxSupplies: 300
+  requiredBeetles: 5
+  waveDurationSeconds: 20
+  tutorialText: Stronger attacks and rising consumption of the city ups the stakes.
+  flavourText: Do not be afraid. The Robobugs will prevail.
+  cityCount: 1
+  WaveID: 4
+  factoryConfigs:
+  - label: Friendly1
+    robot: {fileID: 6327413809677703104, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+    capacity: 20
+    spawnSpeed: 1
+    robotConfig:
+      entityType: 1
+      health: 60
+      scrap: 50
+      chaseConfig:
+        chaseTargets: 02000000
+        visionRange: 7
+        chaseSpeed: 6
+      attackConfig:
+        attackTargets: 
+        attackRange: 0
+        projectileSpeed: 0
+        projectileDamage: 0
+        cooldownBetweenShots: 0
+  - label: Enemy1
+    robot: {fileID: 5981014902726068451, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
+    capacity: 3
+    spawnSpeed: 1
+    robotConfig:
+      entityType: 0
+      health: 40
+      scrap: 30
+      chaseConfig:
+        chaseTargets: 01000000
+        visionRange: 9
+        chaseSpeed: 4
+      attackConfig:
+        attackTargets: 01000000
+        attackRange: 7
+        projectileSpeed: 10
+        projectileDamage: 10
+        cooldownBetweenShots: 0.8
+  alliedSpawns: []
+  enemySpawns: []

@@ -18,8 +18,9 @@ MonoBehaviour:
   requiredBeetles: 1
   waveDurationSeconds: 15
   tutorialText: A robo-beetle needs your help finding the city!
-  flavourText: The compass points the way!
+  flavourText: Explore the map, and use the compass to take them to the city!
   cityCount: 1
+  WaveID: 0
   factoryConfigs: []
   alliedSpawns:
   - entityType: 1

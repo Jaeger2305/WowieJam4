@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb2008fd7c7119458c819754af524dc, type: 3}
+  m_Name: Wave2
+  m_EditorClassIdentifier: 
+  consumptionRate: 2
+  startingSupplies: 100
+  maxSupplies: 100
+  requiredBeetles: 5
+  waveDurationSeconds: 20
+  tutorialText: Setup a factory, and observe them going to the city. Click to shoot
+    the evil robo-beetles!
+  flavourText: AI is learning - we've set up a factory, and now they can auto go
+    to the city. But there is also a competing AI factory starting to annoy us.
+  cityCount: 1
+  WaveID: 2
+  factoryConfigs:
+  - label: Friendly1
+    robot: {fileID: 6327413809677703104, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+    capacity: 10
+    spawnSpeed: 1
+    robotConfig:
+      entityType: 1
+      health: 30
+      scrap: 15
+      chaseConfig:
+        chaseTargets: 
+        visionRange: 0
+        chaseSpeed: 0
+      attackConfig:
+        attackTargets: 
+        attackRange: 0
+        projectileSpeed: 0
+        projectileDamage: 0
+        cooldownBetweenShots: 0
+  - label: Enemy1
+    robot: {fileID: 5981014902726068451, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
+    capacity: 5
+    spawnSpeed: 1
+    robotConfig:
+      entityType: 0
+      health: 30
+      scrap: 15
+      chaseConfig:
+        chaseTargets: 0100000002000000
+        visionRange: 12
+        chaseSpeed: 10
+      attackConfig:
+        attackTargets: 
+        attackRange: 0
+        projectileSpeed: 0
+        projectileDamage: 0
+        cooldownBetweenShots: 0
+  alliedSpawns: []
+  enemySpawns: []

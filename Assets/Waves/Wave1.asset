@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   consumptionRate: 1
-  startingSupplies: 100
-  maxSupplies: 100
+  startingSupplies: 250
+  maxSupplies: 250
   requiredBeetles: 3
   waveDurationSeconds: 30
   tutorialText: Click to shoot the evil robo-beetles!

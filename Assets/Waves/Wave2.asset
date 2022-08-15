@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wave2
   m_EditorClassIdentifier: 
   consumptionRate: 5
-  startingSupplies: 150
-  maxSupplies: 150
+  startingSupplies: 200
+  maxSupplies: 200
   requiredBeetles: 10
   waveDurationSeconds: 30
   tutorialText: Factories will continuously produce robots!

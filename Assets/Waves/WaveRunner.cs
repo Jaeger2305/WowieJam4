@@ -101,7 +101,8 @@ public class WaveRunner : MonoBehaviour
 
 
             // reconfigure all properties according to the config
-            robotFactory.ConfigureFactory(factoryConfig);
+            robotFactory.ConfigureFactory(factoryConfig, factoryConfig.robotConfig.entityType == EntityType.AlliedRobot ? _city.transform : null);
+
 
             // adjust the timer
             _timer.DeregisterAllListenersForFunction(robotFactory.SpawnRobot);

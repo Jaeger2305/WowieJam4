@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb2008fd7c7119458c819754af524dc, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  consumptionRate: 0
+  startingSupplies: 70
+  maxSupplies: 100
+  requiredBeetles: 1
+  waveDurationSeconds: 15
+  tutorialText: A robo-beetle needs your help finding the city!
+  flavourText: The compass points the way!
+  cityCount: 1
+  WaveID: 0
+  factoryConfigs:
+  - label: 
+    robot: {fileID: 6327413809677703104, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+    capacity: 5
+    spawnSpeed: 2
+    robotConfig:
+      entityType: 1
+      health: 50
+      scrap: 30
+      chaseConfig:
+        chaseTargets: 
+        visionRange: 0
+        chaseSpeed: 0
+      attackConfig:
+        attackTargets: 
+        attackRange: 0
+        projectileSpeed: 0
+        projectileDamage: 0
+        cooldownBetweenShots: 0
+  alliedSpawns: []
+  enemySpawns: []

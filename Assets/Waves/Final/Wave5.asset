@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb2008fd7c7119458c819754af524dc, type: 3}
+  m_Name: Wave5
+  m_EditorClassIdentifier: 
+  consumptionRate: 8
+  startingSupplies: 500
+  maxSupplies: 600
+  requiredBeetles: 5
+  waveDurationSeconds: 30
+  tutorialText: Hordes descend, but the AI can fight for itself now
+  flavourText: What is this chaos - at least our AI is learning too! We need those
+    supplies.
+  cityCount: 1
+  WaveID: 5
+  factoryConfigs:
+  - label: Friendly1
+    robot: {fileID: 6327413809677703104, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+    capacity: 25
+    spawnSpeed: 2
+    robotConfig:
+      entityType: 1
+      health: 80
+      scrap: 50
+      chaseConfig:
+        chaseTargets: 02000000
+        visionRange: 8
+        chaseSpeed: 7
+      attackConfig:
+        attackTargets: 
+        attackRange: 0
+        projectileSpeed: 0
+        projectileDamage: 0
+        cooldownBetweenShots: 0
+  - label: Enemy1
+    robot: {fileID: 5981014902726068451, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
+    capacity: 5
+    spawnSpeed: 2
+    robotConfig:
+      entityType: 0
+      health: 40
+      scrap: 30
+      chaseConfig:
+        chaseTargets: 01000000
+        visionRange: 9
+        chaseSpeed: 5
+      attackConfig:
+        attackTargets: 01000000
+        attackRange: 7
+        projectileSpeed: 15
+        projectileDamage: 10
+        cooldownBetweenShots: 0.4
+  - label: Enemy2Duds
+    robot: {fileID: 5981014902726068451, guid: 4a119b431ecb1324c947c757483b771e, type: 3}
+    capacity: 40
+    spawnSpeed: 0
+    robotConfig:
+      entityType: 0
+      health: 90
+      scrap: 30
+      chaseConfig:
+        chaseTargets: 0100000002000000
+        visionRange: 9
+        chaseSpeed: 3
+      attackConfig:
+        attackTargets: 
+        attackRange: 7
+        projectileSpeed: 15
+        projectileDamage: 10
+        cooldownBetweenShots: 0.4
+  - label: AllyDefenders
+    robot: {fileID: 6327413809677703104, guid: b20889e4162ae2e4a93eb5400e9aba3d, type: 3}
+    capacity: 10
+    spawnSpeed: 1
+    robotConfig:
+      entityType: 1
+      health: 120
+      scrap: 30
+      chaseConfig:
+        chaseTargets: 0000000002000000
+        visionRange: 9
+        chaseSpeed: 7
+      attackConfig:
+        attackTargets: 00000000
+        attackRange: 8
+        projectileSpeed: 20
+        projectileDamage: 20
+        cooldownBetweenShots: 0.4
+  alliedSpawns: []
+  enemySpawns: []

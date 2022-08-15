@@ -65,11 +65,12 @@ public class RobotFactory : MonoBehaviour
         gameObject.GetComponent<EntityMetadata>().SetEntityType(robotConfig.entityType);
         gameObject.GetComponent<ChaseModule>().ConfigureModule(robotConfig.chaseConfig);
         gameObject.GetComponent<AttackModule>().ConfigureModule(robotConfig.attackConfig);
-        gameObject.GetComponent<PatrolModule>().ConfigureModule(5f, 10f);
+        gameObject.GetComponent<PatrolModule>().ConfigureModule(5f, 3f);
     }
 
-    public void ConfigureFactory(RobotFactoryConfig factoryConfig)
+    public void ConfigureFactory(RobotFactoryConfig factoryConfig, Transform waypoint)
     {
+        robotDestination = waypoint;
         label = factoryConfig.label;
         robot = factoryConfig.robot;
         capacity = factoryConfig.capacity;

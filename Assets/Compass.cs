@@ -34,6 +34,7 @@ public class Compass : MonoBehaviour
         target = _potentialTargets.OrderBy(t => Vector3.Distance(t.position, source.position)).FirstOrDefault();
 
         compassCanvasGroup.alpha = target == null ? 0 : 1;
+        if (target == null) return;
 
         Vector3 relative = source.InverseTransformPoint(target.position);
         float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
