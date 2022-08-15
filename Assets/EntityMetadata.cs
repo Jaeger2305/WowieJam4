@@ -16,4 +16,9 @@ public class EntityMetadata : MonoBehaviour
 
     [SerializeField] private string _label;
     public string label { get { return _label; } private set { _label = value; } }
+
+    public void SetEntityType(EntityType entityType)
+    {
+        _entityType = entityType;
+    }
 }

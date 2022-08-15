@@ -1,21 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
+using System.Linq;
 
 public class WaveRunner : MonoBehaviour
 {
     [SerializeField] private List<WaveData> _waves = new List<WaveData>();
+    [SerializeField] private Spawner _enemySpawn;
+    [SerializeField] private Spawner _enemyFactorySpawn;
+    [SerializeField] private Spawner _alliedFactorySpawn;
     public UnityEvent waveComplete;
     public UnityEvent allWavesComplete;
 
     public GameObject factoryPrefab;
 
-    private List<GameObject> _enemyFactories = new List<GameObject>();
+    private List<RobotFactory> _factories = new List<RobotFactory>();
 
-    public void StartWave()
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private GameObject _alliedPrefab;
+
+    private Timer _timer;
+
+    private void Start()
     {
+        _timer = GetComponent<Timer>();
+    }
+
+    public void StartWave(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        Debug.Log("Starting wave");
         if (_waves.Count == 0)
         {
             allWavesComplete.Invoke();
@@ -24,16 +40,41 @@ public class WaveRunner : MonoBehaviour
         var config = _waves.ElementAt(0);
         _waves.RemoveAt(0);
 
-        // spawn enemy factories
-
-        if (_enemyFactories.Count < config.enemyFactoryCount)
+        for (int i = 0; i < config.enemySpawnCount; i++)
         {
-            var factory = Instantiate(factoryPrefab);
+            _enemySpawn.SpawnInCollider(_enemyPrefab);
+        }
 
-            // Position the factory randomly, this is a risk of spawning in an unreachable zone
-            // Better would be to check the pathfinding and validate before placing, but, time constraints.
-            factory.transform.position = Random.insideUnitCircle * 20 + new Vector2(20, 20);
-            factory.GetComponent<RobotFactory>().ConfigureFactory(config.friendlyRobotHealth);
+        foreach (var factoryConfig in config.factoryConfigs)
+        {
+            RobotFactory robotFactory;
+            // If the factory doesn't already exist, create it.
+            if (_factories.FirstOrDefault(f => f.label == factoryConfig.label) == null)
+            {
+                GameObject factoryGO = _enemyFactorySpawn.SpawnInCollider(factoryPrefab);
+                robotFactory = factoryGO.GetComponent<RobotFactory>();
+                _factories.Add(robotFactory);
+            } else
+            {
+                robotFactory = _factories.First(f => f.label == factoryConfig.label);
+            }
+
+
+            // reconfigure all properties according to the config
+            robotFactory.ConfigureFactory(factoryConfig);
+
+            // adjust the timer
+            _timer.DeregisterAllListenersForFunction(robotFactory.SpawnRobot);
+            if (factoryConfig.spawnSpeed == TickSpeed.Fast)
+            {
+                _timer.quickTick.AddListener(robotFactory.SpawnRobot);
+            } else if (factoryConfig.spawnSpeed == TickSpeed.Medium)
+            {
+                _timer.normalTick.AddListener(robotFactory.SpawnRobot);
+            } else
+            {
+                _timer.slowTick.AddListener(robotFactory.SpawnRobot);
+            }
         }
 
         // Automatically start the next wave with no pause.
@@ -41,5 +82,4 @@ public class WaveRunner : MonoBehaviour
         // Maybe we check the scene if there are no enemies, and swap the music then?
         Invoke("StartWave", config.waveDurationSeconds);
     }
-
 }

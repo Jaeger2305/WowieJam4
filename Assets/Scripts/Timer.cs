@@ -32,6 +32,12 @@ public class Timer : MonoBehaviour
             if (tick % normalTickSpeed == 0) normalTick.Invoke();
             if (tick % slowTickSpeed == 0) slowTick.Invoke();
         }
+    }
 
+    public void DeregisterAllListenersForFunction(UnityAction call)
+    {
+        quickTick.RemoveListener(call);
+        normalTick.RemoveListener(call);
+        slowTick.RemoveListener(call);
     }
 }

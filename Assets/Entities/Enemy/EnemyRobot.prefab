@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 4976980124445821154}
   - component: {fileID: 3608900893479686515}
   - component: {fileID: 2608458120760304566}
+  - component: {fileID: 5521118003916686077}
   m_Layer: 0
   m_Name: EnemyRobot
   m_TagString: Untagged
@@ -463,7 +464,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthEmpty:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2608458120760304566}
+        m_TargetAssemblyTypeName: PlayerGFX, Assembly-CSharp
+        m_MethodName: TriggerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6849637354577158049}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   healthChanged:
     m_PersistentCalls:
       m_Calls:
@@ -617,6 +642,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e67ed44a503b140be8fbd2629b00fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5521118003916686077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981014902726068451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9093225abcab7d4b8c974a0c02a2526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrapPrefab: {fileID: 1838989963862833393, guid: 5908dbe0535261b43842203c4b2dde77, type: 3}
+  scrapCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  scrapSpent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5981014904482002523
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class PatrolModule : MonoBehaviour
     private void Awake()
     {
         _ai = GetComponent<IAstarAI>();
+        _startingPosition = transform.position;
     }
 
     public void ConfigureModule(float patrolRadius, float patrolSpeed)
