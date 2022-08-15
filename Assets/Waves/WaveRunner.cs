@@ -19,6 +19,7 @@ public class WaveRunner : MonoBehaviour
     public UnityEvent waveComplete;
     public UnityEvent allWavesComplete;
     public UnityEvent OnNewWaveStart;
+    public UnityEvent<List<Transform>> friendlyFactoryLocationsChange;
 
     public GameObject factoryPrefab;
 
@@ -117,6 +118,8 @@ public class WaveRunner : MonoBehaviour
         }
 
         OnNewWaveStart?.Invoke();
+        var friendlyFactories = _factories.Where(f => f.robot.GetComponent<EntityMetadata>().entityType == EntityType.AlliedRobot).Select(f => f.transform).ToList();
+        friendlyFactoryLocationsChange.Invoke(friendlyFactories);
     }
 
     public WaveData GetCurrentWaveData()
