@@ -1491,7 +1491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3128870788764401808, guid: beafb8edf828af346af4e3211664fa8e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5.7599945
+      value: -5.76001
       objectReference: {fileID: 0}
     - target: {fileID: 3128870788764401808, guid: beafb8edf828af346af4e3211664fa8e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5536,8 +5536,8 @@ MonoBehaviour:
   _durationShowCurrencyOnPickup: 2.15
   _tutorialControls: {fileID: 1267822323}
   _tutTxt: {fileID: 503196296}
-  _tutorialDisplayDuration: 2.5
-  _waveTutDisplayDuration: 4
+  _tutorialDisplayDuration: 5
+  _waveTutDisplayDuration: 6
   _waveCtrl: {fileID: 703634497}
 --- !u!4 &1999620013
 Transform:
@@ -5678,7 +5678,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7704213, y: 1}
+    m_SensorSize: {x: 1.5, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
