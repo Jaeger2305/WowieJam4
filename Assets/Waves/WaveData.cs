@@ -6,6 +6,9 @@ using UnityEngine;
 public class WaveData : ScriptableObject
 {
     public int consumptionRate = 5;
+    public int startingSupplies = 100;
+    public int maxSupplies = 100;
+    public int requiredBeetles = 5;
     public float waveDurationSeconds = 20;
     public string tutorialText;
     public string flavourText;

@@ -23,6 +23,13 @@ public class Warehouse : MonoBehaviour
     }
     [SerializeField] private int _supplyConsumption = 10;
 
+    public void ConfigureWarehouse(int supplies, int maxSupplies, int consumptionRate)
+    {
+        _supplies = supplies;
+        _maxSupplies = maxSupplies;
+        _supplyConsumption = consumptionRate;
+    }
+
     /** Consume the standard amount from the class' config- useful for consuming overtime on a game tick. */
     public void ConsumeSupplies() { ConsumeSupplies(_supplyConsumption); }
     

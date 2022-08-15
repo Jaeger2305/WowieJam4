@@ -12,6 +12,7 @@ public class WaveRunner : MonoBehaviour
     [SerializeField] private Spawner _enemySpawn;
     [SerializeField] private Spawner _enemyFactorySpawn;
     [SerializeField] private Spawner _alliedFactorySpawn;
+    [SerializeField] private Warehouse _city;
     public UnityEvent waveComplete;
     public UnityEvent allWavesComplete;
 
@@ -40,6 +41,8 @@ public class WaveRunner : MonoBehaviour
         }
         var config = _waves.ElementAt(0);
         _waves.RemoveAt(0);
+
+        _city.ConfigureWarehouse(config.startingSupplies, config.maxSupplies, config.consumptionRate);
 
         foreach (var robotConfig in config.alliedSpawns)
         {
