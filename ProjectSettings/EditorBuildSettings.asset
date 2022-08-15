@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: 46c6bcf0ea0f8ec49afd5bb75a841066
   - enabled: 1
-    path: Assets/Scenes/WanderingCharacters.unity
-    guid: 214063ebe8d9f29429a1b91e8a417de2
+    path: Assets/Scenes/CombinedRichardZh.unity
+    guid: 74487592ba4760d4692f3e5578004954
   - enabled: 1
     path: Assets/Scenes/EndScene.unity
     guid: 0d683bd87d058654c90d0b88eade9656
