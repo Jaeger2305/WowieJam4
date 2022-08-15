@@ -9,12 +9,16 @@ public class Projectile : MonoBehaviour
     private int speedFactor;
     private int damage = 5;
     [SerializeField] List<EntityType> _targetEntityTypes;
+    [SerializeField] List<AudioClip> _sfx;
+    [SerializeField] float _vol;
 
     private Rigidbody2D projectileBody;
 
     void Awake()
     {
         projectileBody = GetComponent<Rigidbody2D>();
+        var sp = GetComponent<SoundPlayer>();
+        sp.TryPlaySound(sp.GetVariant(_sfx), SoundType.World, _vol);
     }
 
     public void Init(Transform target, Transform source, int speedFactor, int damage, List<EntityType> targetEntityTypes)

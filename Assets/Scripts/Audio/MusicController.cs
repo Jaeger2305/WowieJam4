@@ -18,8 +18,11 @@ public class MusicController : MonoBehaviour
     [SerializeField] AudioClip _titleLoop;
     [SerializeField] AudioClip _gameTrack1;
     [SerializeField] AudioClip _gameTrack1Add;
+    [SerializeField] AudioClip _combatTrack1;
+    [SerializeField] AudioClip _combatTrack1Add;
     [Header("Track Settings")]
     [SerializeField] float _gamePlayTransitionDuration;
+    [SerializeField] float _combatWaveTransitionDuration;
     [Header("Controller Settings")]
     [SerializeField][Range(0.01f,1f)] float _musicVolumeMult = 1f;
     [SerializeField] AudioSource _musicSourcePrimary;
@@ -44,6 +47,11 @@ public class MusicController : MonoBehaviour
     public void GameStartTriggerMusic()
     {
         StartCoroutine(FadeIntoSynchronous(_gamePlayTransitionDuration, _gameTrack1, _gameTrack1Add, true, _defaultFadeDuration));
+    }
+
+    public void CombatWaveStart()
+    {
+        StartCoroutine(FadeIntoSynchronous(_combatWaveTransitionDuration, _combatTrack1, _combatTrack1Add, true, _defaultFadeDuration));
     }
     #endregion
     #region General Music Control
@@ -94,6 +102,7 @@ public class MusicController : MonoBehaviour
         while (Time.time < startTime + duration) {
             float t = (Time.time - startTime) / duration;   
             source.volume = fadeIn ? _volFadeInCurve.Evaluate(t) : _volFadeOutCurve.Evaluate(t);
+            source.volume *= _musicVolumeMult;
             yield return null;
         }
         source.volume = fadeIn ? _volFadeInCurve.Evaluate(1f) : _volFadeOutCurve.Evaluate(1f);
@@ -143,6 +152,8 @@ public class MusicController : MonoBehaviour
 
         _musicSourcePrimary.clip = primary;
         _musicSourceSecondary.clip = secondary;
+        _musicSourcePrimary.Play();
+        _musicSourceSecondary.Play();
         StartCoroutine(FadeVolume(true, _musicSourcePrimary, Time.time, totalFadeDuration * 0.5f));
     }
 

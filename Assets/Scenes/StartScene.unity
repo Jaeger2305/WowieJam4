@@ -6565,8 +6565,8 @@ MonoBehaviour:
   _titleLoop: {fileID: 8300000, guid: e36618784fcb8cc4ab525353ad57d22c, type: 3}
   _gameTrack1: {fileID: 8300000, guid: aefdb2ff869c95745a113bb556b0786c, type: 3}
   _gameTrack1Add: {fileID: 8300000, guid: aefdb2ff869c95745a113bb556b0786c, type: 3}
-  _gamePlayTransitionDuration: 0
-  _musicVolumeMult: 1
+  _gamePlayTransitionDuration: 1.15
+  _musicVolumeMult: 0.4
   _musicSourcePrimary: {fileID: 975944034}
   _musicSourceSecondary: {fileID: 196522034}
   _musicSourceOneShots: {fileID: 1790153785}

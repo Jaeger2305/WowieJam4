@@ -65,12 +65,15 @@ public class SoundPlayer : MonoBehaviour
 
     void PlaySpatial(AudioClip sfx, float volumeScale)
     {
-        print("playspatial");
-
         if (_as == null) return;
         _as.loop = false;
         _as.clip = sfx;
         _as.volume = volumeScale;
         _as.Play();
+    }
+
+    public AudioClip GetVariant(List<AudioClip> clips)
+    {
+        return clips[Random.Range(0, clips.Count - 1)];
     }
 }
